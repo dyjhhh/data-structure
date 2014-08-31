@@ -1,33 +1,40 @@
-#include "png.h"
-#include <stdio.h>
-#include <string>
 
+#include <iostream>
+#include "png.h"
+#include "rgbapixel.h"
 using namespace std;
 
-int main()
-{
-	//RGBAPixel pix = RGBAPixel(125, 125, 125);
-	PNG input("in.png");
-	PNG output(input.width(), input.height());
+PNG rotate(PNG p);
 
-	//cout << input.width() - 1 << endl;
+int main() {
+
+
+	PNG in("in.png");
 	
-	for(int i = 0; i < input.width() ; i++)
-	{
-		for(int j = 0; j < input.height() ; j++)
-		{
-			int targetX = input.width() - 1 - i;
-			int targetY = input.height() - 1 - j;
-			//cout << "targetX: " << targetX << endl << "targetY: " << targetY << endl;
+	PNG out = rotate(in);
+
+	out.writeToFile("out.png");
+
+}
+	
+
+
+PNG rotate(PNG p) {
+	int height = p.height();
+	int width = p.width();
+	PNG out = PNG(width, height);
+
+	for (int x = 0; x < width; x++) {
+
+		for (int y = 0; y < height; y++) {
 			
-			output(targetX, targetY)->red = input(i, j)->red;
-			output(targetX, targetY)->green = input(i, j)->green;
-			output(targetX, targetY)->blue = input(i, j)->blue;
-			output(targetX, targetY)->alpha = input(i, j)->alpha;
+			*out(x,y) = *p((width-1)-x, (height-1)-y);
 			
 		}
+
 	}
 
-	output.writeToFile("out.png");
-	
+
+	return out;
+
 }
