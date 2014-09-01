@@ -1,0 +1,7 @@
+Monad Autograder
+Testing lab_intro at 2014-09-01 02:35:46
+
+"@return A voidean value indicating whether the test was successful." ~ lab_avl
+
+Setting up test environment...
+Error: /dev/shm/grading/svn_checkout/dong28/lab_intro/rgbapixel.cpp does not exist.
