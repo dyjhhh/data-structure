@@ -1,0 +1,293 @@
+Monad Autograder
+Testing mp1 at 2014-09-03 02:43:13
+
+"Should array indices start at 0 or 1? My compromise of 0.5 was rejected without, I thought, proper consideration." ~ Stan Kelly-Bootle
+
+Setting up test environment...
+Compiling...
+================================================================
+g++ -c -g -O0 -Wall -Werror -std=c++0x main.cpp
+g++ main.o png.o rgbapixel.o -lpng -o mp1
+main.o: In function `main':
+/dev/shm/khattar2/grading/_current/monad_cxx14/mp1_grade/main.cpp:10: undefined reference to `PNG::PNG(std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)'
+/dev/shm/khattar2/grading/_current/monad_cxx14/mp1_grade/main.cpp:31: undefined reference to `PNG::writeToFile(std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)'
+png.o: In function `PNG::_clamp_xy(unsigned long&, unsigned long&) const':
+png.cpp:(.text+0x68e): undefined reference to `vtable for std::__1::ios_base'
+png.cpp:(.text+0x780): undefined reference to `std::__1::ios_base::init(void*)'
+png.o: In function `epng_err(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&)':
+png.cpp:(.text._Z8epng_errRKNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEE[epng_err(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&)]+0xc): undefined reference to `std::__1::cerr'
+png.o: In function `std::__1::basic_ostream<char, std::__1::char_traits<char> >::operator<<(unsigned long)':
+png.cpp:(.text._ZNSt3__113basic_ostreamIcNS_11char_traitsIcEEElsEm[std::__1::basic_ostream<char, std::__1::char_traits<char> >::operator<<(unsigned long)]+0x84): undefined reference to `std::__1::ios_base::getloc() const'
+png.cpp:(.text._ZNSt3__113basic_ostreamIcNS_11char_traitsIcEEElsEm[std::__1::basic_ostream<char, std::__1::char_traits<char> >::operator<<(unsigned long)]+0x9c): undefined reference to `std::__1::num_put<char, std::__1::ostreambuf_iterator<char, std::__1::char_traits<char> > >::id'
+png.cpp:(.text._ZNSt3__113basic_ostreamIcNS_11char_traitsIcEEElsEm[std::__1::basic_ostream<char, std::__1::char_traits<char> >::operator<<(unsigned long)]+0xa6): undefined reference to `std::__1::locale::use_facet(std::__1::locale::id&) const'
+png.cpp:(.text._ZNSt3__113basic_ostreamIcNS_11char_traitsIcEEElsEm[std::__1::basic_ostream<char, std::__1::char_traits<char> >::operator<<(unsigned long)]+0xcc): undefined reference to `std::__1::locale::~locale()'
+png.cpp:(.text._ZNSt3__113basic_ostreamIcNS_11char_traitsIcEEElsEm[std::__1::basic_ostream<char, std::__1::char_traits<char> >::operator<<(unsigned long)]+0x1be): undefined reference to `std::__1::ios_base::getloc() const'
+png.cpp:(.text._ZNSt3__113basic_ostreamIcNS_11char_traitsIcEEElsEm[std::__1::basic_ostream<char, std::__1::char_traits<char> >::operator<<(unsigned long)]+0x1d3): undefined reference to `std::__1::ctype<char>::id'
+png.cpp:(.text._ZNSt3__113basic_ostreamIcNS_11char_traitsIcEEElsEm[std::__1::basic_ostream<char, std::__1::char_traits<char> >::operator<<(unsigned long)]+0x1dd): undefined reference to `std::__1::locale::use_facet(std::__1::locale::id&) const'
+png.cpp:(.text._ZNSt3__113basic_ostreamIcNS_11char_traitsIcEEElsEm[std::__1::basic_ostream<char, std::__1::char_traits<char> >::operator<<(unsigned long)]+0x255): undefined reference to `std::__1::locale::~locale()'
+png.cpp:(.text._ZNSt3__113basic_ostreamIcNS_11char_traitsIcEEElsEm[std::__1::basic_ostream<char, std::__1::char_traits<char> >::operator<<(unsigned long)]+0x280): undefined reference to `std::__1::locale::~locale()'
+png.cpp:(.text._ZNSt3__113basic_ostreamIcNS_11char_traitsIcEEElsEm[std::__1::basic_ostream<char, std::__1::char_traits<char> >::operator<<(unsigned long)]+0x3a5): undefined reference to `std::__1::ios_base::clear(unsigned int)'
+png.cpp:(.text._ZNSt3__113basic_ostreamIcNS_11char_traitsIcEEElsEm[std::__1::basic_ostream<char, std::__1::char_traits<char> >::operator<<(unsigned long)]+0x411): undefined reference to `std::__1::locale::~locale()'
+png.cpp:(.text._ZNSt3__113basic_ostreamIcNS_11char_traitsIcEEElsEm[std::__1::basic_ostream<char, std::__1::char_traits<char> >::operator<<(unsigned long)]+0x461): undefined reference to `std::__1::ios_base::__set_badbit_and_consider_rethrow()'
+png.o: In function `std::__1::basic_ostream<char, std::__1::char_traits<char> >& std::__1::endl<char, std::__1::char_traits<char> >(std::__1::basic_ostream<char, std::__1::char_traits<char> >&)':
+png.cpp:(.text._ZNSt3__14endlIcNS_11char_traitsIcEEEERNS_13basic_ostreamIT_T0_EES7_[std::__1::basic_ostream<char, std::__1::char_traits<char> >& std::__1::endl<char, std::__1::char_traits<char> >(std::__1::basic_ostream<char, std::__1::char_traits<char> >&)]+0x38): undefined reference to `std::__1::ios_base::getloc() const'
+png.cpp:(.text._ZNSt3__14endlIcNS_11char_traitsIcEEEERNS_13basic_ostreamIT_T0_EES7_[std::__1::basic_ostream<char, std::__1::char_traits<char> >& std::__1::endl<char, std::__1::char_traits<char> >(std::__1::basic_ostream<char, std::__1::char_traits<char> >&)]+0x45): undefined reference to `std::__1::ctype<char>::id'
+png.cpp:(.text._ZNSt3__14endlIcNS_11char_traitsIcEEEERNS_13basic_ostreamIT_T0_EES7_[std::__1::basic_ostream<char, std::__1::char_traits<char> >& std::__1::endl<char, std::__1::char_traits<char> >(std::__1::basic_ostream<char, std::__1::char_traits<char> >&)]+0x4f): undefined reference to `std::__1::locale::use_facet(std::__1::locale::id&) const'
+png.cpp:(.text._ZNSt3__14endlIcNS_11char_traitsIcEEEERNS_13basic_ostreamIT_T0_EES7_[std::__1::basic_ostream<char, std::__1::char_traits<char> >& std::__1::endl<char, std::__1::char_traits<char> >(std::__1::basic_ostream<char, std::__1::char_traits<char> >&)]+0xa6): undefined reference to `std::__1::locale::~locale()'
+png.cpp:(.text._ZNSt3__14endlIcNS_11char_traitsIcEEEERNS_13basic_ostreamIT_T0_EES7_[std::__1::basic_ostream<char, std::__1::char_traits<char> >& std::__1::endl<char, std::__1::char_traits<char> >(std::__1::basic_ostream<char, std::__1::char_traits<char> >&)]+0xb8): undefined reference to `std::__1::locale::~locale()'
+png.o: In function `std::__1::__basic_string_common<true>::__throw_length_error() const':
+png.cpp:(.text._ZNKSt3__121__basic_string_commonILb1EE20__throw_length_errorEv[std::__1::__basic_string_common<true>::__throw_length_error() const]+0x3e): undefined reference to `std::logic_error::logic_error(char const*)'
+png.o: In function `std::__1::basic_ostream<char, std::__1::char_traits<char> >::sentry::~sentry()':
+png.cpp:(.text._ZNSt3__113basic_ostreamIcNS_11char_traitsIcEEE6sentryD2Ev[std::__1::basic_ostream<char, std::__1::char_traits<char> >::sentry::~sentry()]+0x17f): undefined reference to `std::__1::ios_base::clear(unsigned int)'
+png.o: In function `std::__1::basic_ostream<char, std::__1::char_traits<char> >::flush()':
+png.cpp:(.text._ZNSt3__113basic_ostreamIcNS_11char_traitsIcEEE5flushEv[std::__1::basic_ostream<char, std::__1::char_traits<char> >::flush()]+0x124): undefined reference to `std::__1::ios_base::clear(unsigned int)'
+png.cpp:(.text._ZNSt3__113basic_ostreamIcNS_11char_traitsIcEEE5flushEv[std::__1::basic_ostream<char, std::__1::char_traits<char> >::flush()]+0x176): undefined reference to `std::__1::ios_base::__set_badbit_and_consider_rethrow()'
+png.o: In function `std::__1::basic_streambuf<char, std::__1::char_traits<char> >::~basic_streambuf()':
+png.cpp:(.text._ZNSt3__115basic_streambufIcNS_11char_traitsIcEEED2Ev[std::__1::basic_streambuf<char, std::__1::char_traits<char> >::~basic_streambuf()]+0x29): undefined reference to `std::__1::locale::~locale()'
+png.o: In function `std::__1::basic_streambuf<char, std::__1::char_traits<char> >::basic_streambuf()':
+png.cpp:(.text._ZNSt3__115basic_streambufIcNS_11char_traitsIcEEEC2Ev[std::__1::basic_streambuf<char, std::__1::char_traits<char> >::basic_streambuf()]+0x32): undefined reference to `std::__1::locale::locale()'
+png.o: In function `std::__1::basic_ios<char, std::__1::char_traits<char> >::~basic_ios()':
+png.cpp:(.text._ZNSt3__19basic_iosIcNS_11char_traitsIcEEED2Ev[std::__1::basic_ios<char, std::__1::char_traits<char> >::~basic_ios()]+0x11): undefined reference to `std::__1::ios_base::~ios_base()'
+png.o: In function `std::__1::basic_ostream<char, std::__1::char_traits<char> >::put(char)':
+png.cpp:(.text._ZNSt3__113basic_ostreamIcNS_11char_traitsIcEEE3putEc[std::__1::basic_ostream<char, std::__1::char_traits<char> >::put(char)]+0x1ff): undefined reference to `std::__1::ios_base::clear(unsigned int)'
+png.cpp:(.text._ZNSt3__113basic_ostreamIcNS_11char_traitsIcEEE3putEc[std::__1::basic_ostream<char, std::__1::char_traits<char> >::put(char)]+0x266): undefined reference to `std::__1::ios_base::__set_badbit_and_consider_rethrow()'
+png.o: In function `std::__1::basic_ostream<char, std::__1::char_traits<char> >& std::__1::__put_character_sequence<char, std::__1::char_traits<char> >(std::__1::basic_ostream<char, std::__1::char_traits<char> >&, char const*, unsigned long)':
+png.cpp:(.text._ZNSt3__124__put_character_sequenceIcNS_11char_traitsIcEEEERNS_13basic_ostreamIT_T0_EES7_PKS4_m[std::__1::basic_ostream<char, std::__1::char_traits<char> >& std::__1::__put_character_sequence<char, std::__1::char_traits<char> >(std::__1::basic_ostream<char, std::__1::char_traits<char> >&, char const*, unsigned long)]+0x1c0): undefined reference to `std::__1::ios_base::getloc() const'
+png.cpp:(.text._ZNSt3__124__put_character_sequenceIcNS_11char_traitsIcEEEERNS_13basic_ostreamIT_T0_EES7_PKS4_m[std::__1::basic_ostream<char, std::__1::char_traits<char> >& std::__1::__put_character_sequence<char, std::__1::char_traits<char> >(std::__1::basic_ostream<char, std::__1::char_traits<char> >&, char const*, unsigned long)]+0x1d2): undefined reference to `std::__1::ctype<char>::id'
+png.cpp:(.text._ZNSt3__124__put_character_sequenceIcNS_11char_traitsIcEEEERNS_13basic_ostreamIT_T0_EES7_PKS4_m[std::__1::basic_ostream<char, std::__1::char_traits<char> >& std::__1::__put_character_sequence<char, std::__1::char_traits<char> >(std::__1::basic_ostream<char, std::__1::char_traits<char> >&, char const*, unsigned long)]+0x1dc): undefined reference to `std::__1::locale::use_facet(std::__1::locale::id&) const'
+png.cpp:(.text._ZNSt3__124__put_character_sequenceIcNS_11char_traitsIcEEEERNS_13basic_ostreamIT_T0_EES7_PKS4_m[std::__1::basic_ostream<char, std::__1::char_traits<char> >& std::__1::__put_character_sequence<char, std::__1::char_traits<char> >(std::__1::basic_ostream<char, std::__1::char_traits<char> >&, char const*, unsigned long)]+0x248): undefined reference to `std::__1::locale::~locale()'
+png.cpp:(.text._ZNSt3__124__put_character_sequenceIcNS_11char_traitsIcEEEERNS_13basic_ostreamIT_T0_EES7_PKS4_m[std::__1::basic_ostream<char, std::__1::char_traits<char> >& std::__1::__put_character_sequence<char, std::__1::char_traits<char> >(std::__1::basic_ostream<char, std::__1::char_traits<char> >&, char const*, unsigned long)]+0x26a): undefined reference to `std::__1::locale::~locale()'
+png.cpp:(.text._ZNSt3__124__put_character_sequenceIcNS_11char_traitsIcEEEERNS_13basic_ostreamIT_T0_EES7_PKS4_m[std::__1::basic_ostream<char, std::__1::char_traits<char> >& std::__1::__put_character_sequence<char, std::__1::char_traits<char> >(std::__1::basic_ostream<char, std::__1::char_traits<char> >&, char const*, unsigned long)]+0x33c): undefined reference to `std::__1::ios_base::clear(unsigned int)'
+png.cpp:(.text._ZNSt3__124__put_character_sequenceIcNS_11char_traitsIcEEEERNS_13basic_ostreamIT_T0_EES7_PKS4_m[std::__1::basic_ostream<char, std::__1::char_traits<char> >& std::__1::__put_character_sequence<char, std::__1::char_traits<char> >(std::__1::basic_ostream<char, std::__1::char_traits<char> >&, char const*, unsigned long)]+0x3bd): undefined reference to `std::__1::ios_base::__set_badbit_and_consider_rethrow()'
+png.o:(.rodata._ZTINSt3__19basic_iosIcNS_11char_traitsIcEEEE[typeinfo for std::__1::basic_ios<char, std::__1::char_traits<char> >]+0x10): undefined reference to `typeinfo for std::__1::ios_base'
+collect2: ld returned 1 exit status
+make: *** [mp1] Error 1
+main.o: In function `main':
+/dev/shm/khattar2/grading/_current/monad_cxx14/mp1_grade/main.cpp:10: undefined reference to `PNG::PNG(std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)'
+/dev/shm/khattar2/grading/_current/monad_cxx14/mp1_grade/main.cpp:31: undefined reference to `PNG::writeToFile(std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)'
+png.o: In function `PNG::_clamp_xy(unsigned long&, unsigned long&) const':
+png.cpp:(.text+0x68e): undefined reference to `vtable for std::__1::ios_base'
+png.cpp:(.text+0x780): undefined reference to `std::__1::ios_base::init(void*)'
+png.o: In function `epng_err(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&)':
+png.cpp:(.text._Z8epng_errRKNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEE[epng_err(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&)]+0xc): undefined reference to `std::__1::cerr'
+png.o: In function `std::__1::basic_ostream<char, std::__1::char_traits<char> >::operator<<(unsigned long)':
+png.cpp:(.text._ZNSt3__113basic_ostreamIcNS_11char_traitsIcEEElsEm[std::__1::basic_ostream<char, std::__1::char_traits<char> >::operator<<(unsigned long)]+0x84): undefined reference to `std::__1::ios_base::getloc() const'
+png.cpp:(.text._ZNSt3__113basic_ostreamIcNS_11char_traitsIcEEElsEm[std::__1::basic_ostream<char, std::__1::char_traits<char> >::operator<<(unsigned long)]+0x9c): undefined reference to `std::__1::num_put<char, std::__1::ostreambuf_iterator<char, std::__1::char_traits<char> > >::id'
+png.cpp:(.text._ZNSt3__113basic_ostreamIcNS_11char_traitsIcEEElsEm[std::__1::basic_ostream<char, std::__1::char_traits<char> >::operator<<(unsigned long)]+0xa6): undefined reference to `std::__1::locale::use_facet(std::__1::locale::id&) const'
+png.cpp:(.text._ZNSt3__113basic_ostreamIcNS_11char_traitsIcEEElsEm[std::__1::basic_ostream<char, std::__1::char_traits<char> >::operator<<(unsigned long)]+0xcc): undefined reference to `std::__1::locale::~locale()'
+png.cpp:(.text._ZNSt3__113basic_ostreamIcNS_11char_traitsIcEEElsEm[std::__1::basic_ostream<char, std::__1::char_traits<char> >::operator<<(unsigned long)]+0x1be): undefined reference to `std::__1::ios_base::getloc() const'
+png.cpp:(.text._ZNSt3__113basic_ostreamIcNS_11char_traitsIcEEElsEm[std::__1::basic_ostream<char, std::__1::char_traits<char> >::operator<<(unsigned long)]+0x1d3): undefined reference to `std::__1::ctype<char>::id'
+png.cpp:(.text._ZNSt3__113basic_ostreamIcNS_11char_traitsIcEEElsEm[std::__1::basic_ostream<char, std::__1::char_traits<char> >::operator<<(unsigned long)]+0x1dd): undefined reference to `std::__1::locale::use_facet(std::__1::locale::id&) const'
+png.cpp:(.text._ZNSt3__113basic_ostreamIcNS_11char_traitsIcEEElsEm[std::__1::basic_ostream<char, std::__1::char_traits<char> >::operator<<(unsigned long)]+0x255): undefined reference to `std::__1::locale::~locale()'
+png.cpp:(.text._ZNSt3__113basic_ostreamIcNS_11char_traitsIcEEElsEm[std::__1::basic_ostream<char, std::__1::char_traits<char> >::operator<<(unsigned long)]+0x280): undefined reference to `std::__1::locale::~locale()'
+png.cpp:(.text._ZNSt3__113basic_ostreamIcNS_11char_traitsIcEEElsEm[std::__1::basic_ostream<char, std::__1::char_traits<char> >::operator<<(unsigned long)]+0x3a5): undefined reference to `std::__1::ios_base::clear(unsigned int)'
+png.cpp:(.text._ZNSt3__113basic_ostreamIcNS_11char_traitsIcEEElsEm[std::__1::basic_ostream<char, std::__1::char_traits<char> >::operator<<(unsigned long)]+0x411): undefined reference to `std::__1::locale::~locale()'
+png.cpp:(.text._ZNSt3__113basic_ostreamIcNS_11char_traitsIcEEElsEm[std::__1::basic_ostream<char, std::__1::char_traits<char> >::operator<<(unsigned long)]+0x461): undefined reference to `std::__1::ios_base::__set_badbit_and_consider_rethrow()'
+png.o: In function `std::__1::basic_ostream<char, std::__1::char_traits<char> >& std::__1::endl<char, std::__1::char_traits<char> >(std::__1::basic_ostream<char, std::__1::char_traits<char> >&)':
+png.cpp:(.text._ZNSt3__14endlIcNS_11char_traitsIcEEEERNS_13basic_ostreamIT_T0_EES7_[std::__1::basic_ostream<char, std::__1::char_traits<char> >& std::__1::endl<char, std::__1::char_traits<char> >(std::__1::basic_ostream<char, std::__1::char_traits<char> >&)]+0x38): undefined reference to `std::__1::ios_base::getloc() const'
+png.cpp:(.text._ZNSt3__14endlIcNS_11char_traitsIcEEEERNS_13basic_ostreamIT_T0_EES7_[std::__1::basic_ostream<char, std::__1::char_traits<char> >& std::__1::endl<char, std::__1::char_traits<char> >(std::__1::basic_ostream<char, std::__1::char_traits<char> >&)]+0x45): undefined reference to `std::__1::ctype<char>::id'
+png.cpp:(.text._ZNSt3__14endlIcNS_11char_traitsIcEEEERNS_13basic_ostreamIT_T0_EES7_[std::__1::basic_ostream<char, std::__1::char_traits<char> >& std::__1::endl<char, std::__1::char_traits<char> >(std::__1::basic_ostream<char, std::__1::char_traits<char> >&)]+0x4f): undefined reference to `std::__1::locale::use_facet(std::__1::locale::id&) const'
+png.cpp:(.text._ZNSt3__14endlIcNS_11char_traitsIcEEEERNS_13basic_ostreamIT_T0_EES7_[std::__1::basic_ostream<char, std::__1::char_traits<char> >& std::__1::endl<char, std::__1::char_traits<char> >(std::__1::basic_ostream<char, std::__1::char_traits<char> >&)]+0xa6): undefined reference to `std::__1::locale::~locale()'
+png.cpp:(.text._ZNSt3__14endlIcNS_11char_traitsIcEEEERNS_13basic_ostreamIT_T0_EES7_[std::__1::basic_ostream<char, std::__1::char_traits<char> >& std::__1::endl<char, std::__1::char_traits<char> >(std::__1::basic_ostream<char, std::__1::char_traits<char> >&)]+0xb8): undefined reference to `std::__1::locale::~locale()'
+png.o: In function `std::__1::__basic_string_common<true>::__throw_length_error() const':
+png.cpp:(.text._ZNKSt3__121__basic_string_commonILb1EE20__throw_length_errorEv[std::__1::__basic_string_common<true>::__throw_length_error() const]+0x3e): undefined reference to `std::logic_error::logic_error(char const*)'
+png.o: In function `std::__1::basic_ostream<char, std::__1::char_traits<char> >::sentry::~sentry()':
+png.cpp:(.text._ZNSt3__113basic_ostreamIcNS_11char_traitsIcEEE6sentryD2Ev[std::__1::basic_ostream<char, std::__1::char_traits<char> >::sentry::~sentry()]+0x17f): undefined reference to `std::__1::ios_base::clear(unsigned int)'
+png.o: In function `std::__1::basic_ostream<char, std::__1::char_traits<char> >::flush()':
+png.cpp:(.text._ZNSt3__113basic_ostreamIcNS_11char_traitsIcEEE5flushEv[std::__1::basic_ostream<char, std::__1::char_traits<char> >::flush()]+0x124): undefined reference to `std::__1::ios_base::clear(unsigned int)'
+png.cpp:(.text._ZNSt3__113basic_ostreamIcNS_11char_traitsIcEEE5flushEv[std::__1::basic_ostream<char, std::__1::char_traits<char> >::flush()]+0x176): undefined reference to `std::__1::ios_base::__set_badbit_and_consider_rethrow()'
+png.o: In function `std::__1::basic_streambuf<char, std::__1::char_traits<char> >::~basic_streambuf()':
+png.cpp:(.text._ZNSt3__115basic_streambufIcNS_11char_traitsIcEEED2Ev[std::__1::basic_streambuf<char, std::__1::char_traits<char> >::~basic_streambuf()]+0x29): undefined reference to `std::__1::locale::~locale()'
+png.o: In function `std::__1::basic_streambuf<char, std::__1::char_traits<char> >::basic_streambuf()':
+png.cpp:(.text._ZNSt3__115basic_streambufIcNS_11char_traitsIcEEEC2Ev[std::__1::basic_streambuf<char, std::__1::char_traits<char> >::basic_streambuf()]+0x32): undefined reference to `std::__1::locale::locale()'
+png.o: In function `std::__1::basic_ios<char, std::__1::char_traits<char> >::~basic_ios()':
+png.cpp:(.text._ZNSt3__19basic_iosIcNS_11char_traitsIcEEED2Ev[std::__1::basic_ios<char, std::__1::char_traits<char> >::~basic_ios()]+0x11): undefined reference to `std::__1::ios_base::~ios_base()'
+png.o: In function `std::__1::basic_ostream<char, std::__1::char_traits<char> >::put(char)':
+png.cpp:(.text._ZNSt3__113basic_ostreamIcNS_11char_traitsIcEEE3putEc[std::__1::basic_ostream<char, std::__1::char_traits<char> >::put(char)]+0x1ff): undefined reference to `std::__1::ios_base::clear(unsigned int)'
+png.cpp:(.text._ZNSt3__113basic_ostreamIcNS_11char_traitsIcEEE3putEc[std::__1::basic_ostream<char, std::__1::char_traits<char> >::put(char)]+0x266): undefined reference to `std::__1::ios_base::__set_badbit_and_consider_rethrow()'
+png.o: In function `std::__1::basic_ostream<char, std::__1::char_traits<char> >& std::__1::__put_character_sequence<char, std::__1::char_traits<char> >(std::__1::basic_ostream<char, std::__1::char_traits<char> >&, char const*, unsigned long)':
+png.cpp:(.text._ZNSt3__124__put_character_sequenceIcNS_11char_traitsIcEEEERNS_13basic_ostreamIT_T0_EES7_PKS4_m[std::__1::basic_ostream<char, std::__1::char_traits<char> >& std::__1::__put_character_sequence<char, std::__1::char_traits<char> >(std::__1::basic_ostream<char, std::__1::char_traits<char> >&, char const*, unsigned long)]+0x1c0): undefined reference to `std::__1::ios_base::getloc() const'
+png.cpp:(.text._ZNSt3__124__put_character_sequenceIcNS_11char_traitsIcEEEERNS_13basic_ostreamIT_T0_EES7_PKS4_m[std::__1::basic_ostream<char, std::__1::char_traits<char> >& std::__1::__put_character_sequence<char, std::__1::char_traits<char> >(std::__1::basic_ostream<char, std::__1::char_traits<char> >&, char const*, unsigned long)]+0x1d2): undefined reference to `std::__1::ctype<char>::id'
+png.cpp:(.text._ZNSt3__124__put_character_sequenceIcNS_11char_traitsIcEEEERNS_13basic_ostreamIT_T0_EES7_PKS4_m[std::__1::basic_ostream<char, std::__1::char_traits<char> >& std::__1::__put_character_sequence<char, std::__1::char_traits<char> >(std::__1::basic_ostream<char, std::__1::char_traits<char> >&, char const*, unsigned long)]+0x1dc): undefined reference to `std::__1::locale::use_facet(std::__1::locale::id&) const'
+png.cpp:(.text._ZNSt3__124__put_character_sequenceIcNS_11char_traitsIcEEEERNS_13basic_ostreamIT_T0_EES7_PKS4_m[std::__1::basic_ostream<char, std::__1::char_traits<char> >& std::__1::__put_character_sequence<char, std::__1::char_traits<char> >(std::__1::basic_ostream<char, std::__1::char_traits<char> >&, char const*, unsigned long)]+0x248): undefined reference to `std::__1::locale::~locale()'
+png.cpp:(.text._ZNSt3__124__put_character_sequenceIcNS_11char_traitsIcEEEERNS_13basic_ostreamIT_T0_EES7_PKS4_m[std::__1::basic_ostream<char, std::__1::char_traits<char> >& std::__1::__put_character_sequence<char, std::__1::char_traits<char> >(std::__1::basic_ostream<char, std::__1::char_traits<char> >&, char const*, unsigned long)]+0x26a): undefined reference to `std::__1::locale::~locale()'
+png.cpp:(.text._ZNSt3__124__put_character_sequenceIcNS_11char_traitsIcEEEERNS_13basic_ostreamIT_T0_EES7_PKS4_m[std::__1::basic_ostream<char, std::__1::char_traits<char> >& std::__1::__put_character_sequence<char, std::__1::char_traits<char> >(std::__1::basic_ostream<char, std::__1::char_traits<char> >&, char const*, unsigned long)]+0x33c): undefined reference to `std::__1::ios_base::clear(unsigned int)'
+png.cpp:(.text._ZNSt3__124__put_character_sequenceIcNS_11char_traitsIcEEEERNS_13basic_ostreamIT_T0_EES7_PKS4_m[std::__1::basic_ostream<char, std::__1::char_traits<char> >& std::__1::__put_character_sequence<char, std::__1::char_traits<char> >(std::__1::basic_ostream<char, std::__1::char_traits<char> >&, char const*, unsigned long)]+0x3bd): undefined reference to `std::__1::ios_base::__set_badbit_and_consider_rethrow()'
+png.o:(.rodata._ZTINSt3__19basic_iosIcNS_11char_traitsIcEEEE[typeinfo for std::__1::basic_ios<char, std::__1::char_traits<char> >]+0x10): undefined reference to `typeinfo for std::__1::ios_base'
+collect2: ld returned 1 exit status
+make: *** [mp1] Error 1
+
+
+Running tests...
+================================================================
+RGBAPixel_default_ctor [5 pts]  - passed
+RGBAPixel_three_ctor . [10 pts] - passed
+in_01_png  . . . . . . [5 pts]  - FAILED: Segmentation fault
+in_02_png  . . . . . . [5 pts]  - FAILED: Segmentation fault
+in_03_png  . . . . . . [5 pts]  - FAILED: Segmentation fault
+in_04_png  . . . . . . [5 pts]  - FAILED: Segmentation fault
+in_05_png  . . . . . . [5 pts]  - FAILED: Segmentation fault
+in_06_png  . . . . . . [5 pts]  - FAILED: Segmentation fault
+in_07_png  . . . . . . [5 pts]  - FAILED: Segmentation fault
+in_08_png  . . . . . . [5 pts]  - FAILED: Segmentation fault
+in_09_png  . . . . . . [5 pts]  - FAILED: Segmentation fault
+in_10_png  . . . . . . [5 pts]  - FAILED: Segmentation fault
+in_11_png  . . . . . . [5 pts]  - FAILED: Segmentation fault
+in_12_png  . . . . . . [5 pts]  - FAILED: Segmentation fault
+in_13_png  . . . . . . [5 pts]  - FAILED: Segmentation fault
+in_14_png  . . . . . . [5 pts]  - FAILED: Segmentation fault
+in_15_png  . . . . . . [5 pts]  - FAILED: Segmentation fault
+in_16_png  . . . . . . [5 pts]  - FAILED: Segmentation fault
+in_17_png  . . . . . . [5 pts]  - FAILED: Segmentation fault
+
+
+Total score...
+================================================================
+TOTAL SCORE: 15
+
+
+
+Detailed test output...
+================================================================
+----------------------------------------------------------------
+in_01_png [5 points]
+Result: FAILED: Segmentation fault
+Took 0ms (1000ms timeout)
+Output:
+----------------------------------------------------------------
+exec("./mp1", "./mp1", "
+
+----------------------------------------------------------------
+in_02_png [5 points]
+Result: FAILED: Segmentation fault
+Took 0ms (1000ms timeout)
+Output:
+----------------------------------------------------------------
+exec("./mp1", "./mp1", "
+
+----------------------------------------------------------------
+in_03_png [5 points]
+Result: FAILED: Segmentation fault
+Took 0ms (1000ms timeout)
+Output:
+----------------------------------------------------------------
+exec("./mp1", "./mp1", "
+
+----------------------------------------------------------------
+in_04_png [5 points]
+Result: FAILED: Segmentation fault
+Took 0ms (1000ms timeout)
+Output:
+----------------------------------------------------------------
+exec("./mp1", "./mp1", "
+
+----------------------------------------------------------------
+in_05_png [5 points]
+Result: FAILED: Segmentation fault
+Took 0ms (1000ms timeout)
+Output:
+----------------------------------------------------------------
+exec("./mp1", "./mp1", "
+
+----------------------------------------------------------------
+in_06_png [5 points]
+Result: FAILED: Segmentation fault
+Took 0ms (1000ms timeout)
+Output:
+----------------------------------------------------------------
+exec("./mp1", "./mp1", "
+
+----------------------------------------------------------------
+in_07_png [5 points]
+Result: FAILED: Segmentation fault
+Took 0ms (1000ms timeout)
+Output:
+----------------------------------------------------------------
+exec("./mp1", "./mp1", "
+
+----------------------------------------------------------------
+in_08_png [5 points]
+Result: FAILED: Segmentation fault
+Took 0ms (1000ms timeout)
+Output:
+----------------------------------------------------------------
+exec("./mp1", "./mp1", "
+
+----------------------------------------------------------------
+in_09_png [5 points]
+Result: FAILED: Segmentation fault
+Took 0ms (1000ms timeout)
+Output:
+----------------------------------------------------------------
+exec("./mp1", "./mp1", "
+
+----------------------------------------------------------------
+in_10_png [5 points]
+Result: FAILED: Segmentation fault
+Took 0ms (1000ms timeout)
+Output:
+----------------------------------------------------------------
+exec("./mp1", "./mp1", "
+
+----------------------------------------------------------------
+in_11_png [5 points]
+Result: FAILED: Segmentation fault
+Took 0ms (1000ms timeout)
+Output:
+----------------------------------------------------------------
+exec("./mp1", "./mp1", "
+
+----------------------------------------------------------------
+in_12_png [5 points]
+Result: FAILED: Segmentation fault
+Took 0ms (1000ms timeout)
+Output:
+----------------------------------------------------------------
+exec("./mp1", "./mp1", "
+
+----------------------------------------------------------------
+in_13_png [5 points]
+Result: FAILED: Segmentation fault
+Took 0ms (1000ms timeout)
+Output:
+----------------------------------------------------------------
+exec("./mp1", "./mp1", "
+
+----------------------------------------------------------------
+in_14_png [5 points]
+Result: FAILED: Segmentation fault
+Took 0ms (1000ms timeout)
+Output:
+----------------------------------------------------------------
+exec("./mp1", "./mp1", "
+
+----------------------------------------------------------------
+in_15_png [5 points]
+Result: FAILED: Segmentation fault
+Took 0ms (1000ms timeout)
+Output:
+----------------------------------------------------------------
+exec("./mp1", "./mp1", "
+
+----------------------------------------------------------------
+in_16_png [5 points]
+Result: FAILED: Segmentation fault
+Took 0ms (1000ms timeout)
+Output:
+----------------------------------------------------------------
+exec("./mp1", "./mp1", "
+
+----------------------------------------------------------------
+in_17_png [5 points]
+Result: FAILED: Segmentation fault
+Took 0ms (1000ms timeout)
+Output:
+----------------------------------------------------------------
+exec("./mp1", "./mp1", "
+
+
+----------------------------------------------------------------
+Total score...
+================================================================
+TOTAL SCORE: 15
+
