@@ -1,7 +1,7 @@
 #ifndef RGBAPIXEL_H
 #define RGBAPIXEL_H
 
-#include <iostream>
+#include <ostream>
 
 class RGBAPixel {
 public:

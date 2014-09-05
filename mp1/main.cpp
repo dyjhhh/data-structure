@@ -17,15 +17,14 @@ int main()
   newImage.readFromFile("in.png");
 	
   //we will flip the image horizontally and vertically to rotate it by 180 degrees
-  for(size_t x = 0; x < oldImage.width() ; x++)
+  for(size_t x = 0; x < oldImage.width(); x++)
 	{
-		for(size_t y = 0; y < oldImage.height() ; y++)
+		for(size_t y = 0; y < oldImage.height(); y++)
 		{
-	newImage(horizontal-x-1, vertical-y-1)->red = oldImage(x,y)->red;
+       	newImage(horizontal-x-1, vertical-y-1)->red = oldImage(x,y)->red;
 	newImage(horizontal-x-1, vertical-y-1)->green = oldImage(x,y)->green;
-	  newImage(horizontal-x-1, vertical-y-1)->blue = oldImage(x,y)->blue;
+        newImage(horizontal-x-1, vertical-y-1)->blue = oldImage(x,y)->blue;
 	        }
         }
 	newImage.writeToFile("out.png");
-	
-}
+}	
