@@ -1,5 +1,6 @@
 #include "rgbapixel.h"
-#include <string>
+#include <ostream>
+using namespace std;
 
 RGBAPixel::RGBAPixel()
 {
@@ -9,10 +10,10 @@ RGBAPixel::RGBAPixel()
 	alpha = 255;
 }
 
-RGBAPixel::RGBAPixel(unsigned char redVal, unsigned char greenVal, unsigned char blueVal)
+RGBAPixel::RGBAPixel(unsigned char red_temp, unsigned char green_temp, unsigned char blue_temp)
 {
-	red = redVal;
-	green = greenVal;
-	blue = blueVal;
+	red = red_temp;
+	green = green_temp;
+	blue = blue_temp;
 	alpha = 255;
 }
