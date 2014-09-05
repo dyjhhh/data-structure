@@ -1,5 +1,5 @@
 #include "rgbapixel.h"
-#include <ostream>
+#include <iostream>
 using namespace std;
 
 RGBAPixel::RGBAPixel()
