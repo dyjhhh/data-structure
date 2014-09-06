@@ -1,19 +1,14 @@
 #include "rgbapixel.h"
-#include <iostream>
-using namespace std;
 
 RGBAPixel::RGBAPixel()
 {
-	red = 255;
-	green = 255;
-	blue = 255;
-	alpha = 255;
+	red = 0xFF;
+	green = 0xFF;
+	blue = 0xFF;
 }
-
-RGBAPixel::RGBAPixel(unsigned char red_temp, unsigned char green_temp, unsigned char blue_temp)
+RGBAPixel::RGBAPixel(unsigned char r, unsigned char g, unsigned char b)
 {
-	red = red_temp;
-	green = green_temp;
-	blue = blue_temp;
-	alpha = 255;
+	red = r;
+	green = g;
+	blue = b;
 }
