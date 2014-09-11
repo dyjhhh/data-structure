@@ -1,0 +1,7 @@
+Monad Autograder
+Testing mp2 at 2014-09-11 00:43:39
+
+"Be careful about using the following code -- I've only proven that it works, I haven't tested it." ~ Donald Knuth
+
+Setting up test environment...
+Error: /dev/shm/khattar2/cs225_checkout/dong28/mp2/scene.h does not exist.
