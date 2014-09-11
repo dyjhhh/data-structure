@@ -17,6 +17,14 @@ Allocator::Allocator(const string & studentFile, const string & roomFile)
 	loadStudents(studentFile);
 	loadRooms(roomFile);
 }
+/*
+ *destructor
+ */
+Allocator::~Allocator()
+{
+  delete [] alpha;
+  delete [] rooms;
+}
 
 /**
  * Allocates the array of letters
@@ -44,7 +52,7 @@ void Allocator::loadStudents(const string & file)
 		string name = fileio::nextStudent();
 		char letter = name[0];
 		int index = (int)letter - 'A';
-		alpha[index].addStudent();
+		alpha[index].addStudent(name);
 	}
 }
 
@@ -55,15 +63,16 @@ void Allocator::loadRooms(const string & file)
 {
 	// Read in rooms
 	fileio::loadRooms(file);
+	roomCount = fileio::getNumRooms();
 	rooms = new Room[roomCount];
 
 	totalCapacity = 0;
 	int i = 0;
 	while (fileio::areMoreRooms())
 	{
-		i++;
 		rooms[i] = fileio::nextRoom();
 		totalCapacity += rooms[i].capacity;
+		i++;
 	}
 }
 

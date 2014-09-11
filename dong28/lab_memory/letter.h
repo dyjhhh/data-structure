@@ -33,7 +33,7 @@ class Letter
          * Adds one additional student to the letter group.
          * @param name
          */
-        void addStudent();
+        void addStudent(const string & name);
 
         /**
          * Comparator for letters (to allow for sorting).

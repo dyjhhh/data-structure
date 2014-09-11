@@ -11,7 +11,7 @@ Letter::Letter()
 /**
  * Adds one additional student to the letter group
  */
-void Letter::addStudent()
+void Letter::addStudent(const string & name)
 {
 	count++;
 }
