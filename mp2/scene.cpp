@@ -54,7 +54,7 @@ void Scene::changemaxlayers(int newmax)
         {
             if (layers[i] == NULL)
             {
-                cout<< "invalid new max" << endl;
+	      std::cout<< "invalid new max" << endl;
                 return;
             }
         }
@@ -115,7 +115,7 @@ void Scene::addpicture(const char *FileName, int index, int x, int y)
         ycoords[index] = y;
     } 
     else
-        cout<< "index out of bounds" << endl;
+      std::cout<< "index out of bounds" << endl;
 }
 
 //Move image from one layer to another
@@ -140,7 +140,7 @@ void Scene::changelayer (int index, int newindex)
         xcoords[index] = 0;
         ycoords[index] = 0;
     } else
-        cout <<"invalid index" <<endl;   
+      std::cout <<"invalid index" <<endl;   
 }
 
 //change x, y coord of Image in specified layer
@@ -153,7 +153,7 @@ void Scene::translate(int index, int xcoord, int ycoord)
         xcoords[index] = xcoord;
         ycoords[index] = ycoord;
     } else
-        cout<<"invalid index" <<endl;
+      std::cout<<"invalid index" <<endl;
 }
 
 //delete image at given index
@@ -169,7 +169,7 @@ void Scene::deletepicture(int index)
         ycoords[index] = 0;
     }
     else
-        cout <<"invalid index"<<endl;
+      std::cout <<"invalid index"<<endl;
 
 }
 
@@ -184,7 +184,7 @@ Image * Scene::getpicture(int index) const
     }
     else
     {   
-        cout<<"invalid index"<<endl;
+      std::cout<<"invalid index"<<endl;
         return NULL;
     }
 }
@@ -199,7 +199,7 @@ Image Scene::drawscene() const
     {
         if(layers[i] != NULL)
         {
-            cout << "Layer number: "<< i << endl;
+	  std::cout << "Layer number: "<< i << endl;
             if(min_height < (layers[i]->height()+ycoords[i]))
                 min_height = layers[i]->height()+ycoords[i];
             if(min_width < (layers[i]->width()+xcoords[i]))
