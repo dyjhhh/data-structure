@@ -1,7 +1,9 @@
+svn: Working copy '/dev/shm/khattar2/cs225_current_checkout' locked
+svn: run 'svn cleanup' to remove locks (type 'svn help cleanup' for details)
 Monad Autograder
-Testing mp2 at 2014-09-14 03:07:21
+Testing mp2 at 2014-09-15 01:21:50
 
-"There's no real reason for a lot of the things that I say." ~ Urvashi Khandelwal
+"Chicken is basically a vegetable, I mean, if you compare it to steak." ~ Sean Massung
 
 Setting up test environment...
 Compiling...
