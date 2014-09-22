@@ -1,0 +1,52 @@
+Monad Autograder
+Testing lab_inheritance at 2014-09-22 03:13:21
+
+"I've seen it on Google Maps; I think I know what I'm talking about" ~ Kyle Johnson
+
+Setting up test environment...
+Compiling...
+================================================================
+unit_tests.cpp:78:5: warning: delete called on 'Drawable' that is abstract but has non-virtual destructor [-Wdelete-non-virtual-dtor]
+    delete truck;
+    ^
+unit_tests.cpp:95:5: warning: delete called on 'Drawable' that is abstract but has non-virtual destructor [-Wdelete-non-virtual-dtor]
+    delete truck;
+    ^
+unit_tests.cpp:115:5: warning: delete called on 'Drawable' that is abstract but has non-virtual destructor [-Wdelete-non-virtual-dtor]
+    delete flower;
+    ^
+unit_tests.cpp:126:5: warning: delete called on 'Drawable' that is abstract but has non-virtual destructor [-Wdelete-non-virtual-dtor]
+    delete flower;
+    ^
+4 warnings generated.
+unit_tests.cpp:78:5: warning: delete called on 'Drawable' that is abstract but has non-virtual destructor [-Wdelete-non-virtual-dtor]
+    delete truck;
+    ^
+unit_tests.cpp:95:5: warning: delete called on 'Drawable' that is abstract but has non-virtual destructor [-Wdelete-non-virtual-dtor]
+    delete truck;
+    ^
+unit_tests.cpp:115:5: warning: delete called on 'Drawable' that is abstract but has non-virtual destructor [-Wdelete-non-virtual-dtor]
+    delete flower;
+    ^
+unit_tests.cpp:126:5: warning: delete called on 'Drawable' that is abstract but has non-virtual destructor [-Wdelete-non-virtual-dtor]
+    delete flower;
+    ^
+4 warnings generated.
+
+
+Running tests...
+================================================================
+test_virtual_perim  . . . . . . [10 pts] - passed
+test_virtual_area . . . . . . . [10 pts] - passed
+test_destructor (asan)  . . . . [20 pts] - passed
+test_constructor  . . . . . . . [10 pts] - passed
+test_drawable_destructor (asan) [10 pts] - FAILED
+test_truck_draw . . . . . . . . [10 pts] - passed
+test_slicing  . . . . . . . . . [20 pts] - passed
+test_flower_destructor (asan) . [10 pts] - FAILED
+
+
+Total score...
+================================================================
+TOTAL SCORE: 80
+
