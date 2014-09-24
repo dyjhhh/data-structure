@@ -34,6 +34,8 @@ $(EXENAME)-msan : $(MAIN_OBJS_MSAN)
 	$(CXX) $(CXXFLAGS) $< -o $*.o
 
 main.o:      blockpng.h png.h rgbapixel.h  list.h list.cpp list_given.h list_given.cpp
+main-asan.o: blockpng.h png.h rgbapixel.h  list.h list.cpp list_given.h list_given.cpp
+main-msan.o: blockpng.h png.h rgbapixel.h  list.h list.cpp list_given.h list_given.cpp
 blockpng.o:  blockpng.h png.h rgbapixel.h
 png.o:       png.h rgbapixel.h
 rgbapixel.o: rgbapixel.h
