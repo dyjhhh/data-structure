@@ -1,5 +1,4 @@
-/**
- * @file list.cpp
+/** * @file list.cpp
  * Doubly Linked List (MP 3).
  *
  * @author Chase Geigle
