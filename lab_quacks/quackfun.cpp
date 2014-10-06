@@ -69,7 +69,7 @@ void QuackFun::scramble(queue<T> & q)
 {
   for (int i=1; i<=rev_size; i++)
 {
-  s.push(q.font());
+  s.push(q.front());
   q.pop();
 }
   for (int i=1; i<=rev_size; i++)
@@ -123,7 +123,7 @@ bool QuackFun::verifySame(stack<T> & s, queue<T> & q)
 
     s.push (stack_top);
     q.pop();
-    q.push(queue.front);
+    q.push(queue_front);
     //T temp1; // rename me
     //T temp2; // rename :)
     
