@@ -20,11 +20,22 @@
  *  built. Try searching for "stl stack" to learn how to use it.
  * @hint Think recursively!
  */
+#include<iostream>
+using namespace std;
+
 template <typename T>
 T QuackFun::sum(stack<T> & s)
 {
-    // Your code here
-    return T(); // stub return value (0 for primitive types). Change this!
+  if (s.empty())
+    return T(); 
+  else
+    {
+      T top_temp = s.top();
+      s.pop();
+      T result = top_temp + sum(s);
+      s.push(top_temp);
+      return result;
+    }// stub return value (0 for primitive types). Change this!
                 // Note: T() is the default value for objects, and 0 for
                 // primitive types
 }
@@ -44,9 +55,44 @@ template <typename T>
 void QuackFun::scramble(queue<T> & q)
 {
     stack<T> s;
-    // optional: queue<T> q2;
+    int rev_size = 1;
+    int sum =0;
+    int que_size = q.size();
+    bool reverse = false;
+    bool is_scrambled = false;
 
-    // Your code here
+    while(!is_scrambled)
+      {
+	if (sum + rev_size > que_size)
+	  rev_size = que_size-sum;
+	if (reverse)
+{
+  for (int i=1; i<=rev_size; i++)
+{
+  s.push(q.font());
+  q.pop();
+}
+  for (int i=1; i<=rev_size; i++)
+    {
+      q.push(s.top());
+      s.pop();
+    }
+}
+	else
+	  {
+	    for (int i=1; i<=rev_size; i++)
+	      {
+		q.push(q.front());
+		q.pop();
+	      }
+	  }
+reverse = !reverse;
+sum += rev_size;
+rev_size++;
+
+if (sum == que_size)
+  is_scrambled = true;
+}
 }
 
 /**
@@ -65,6 +111,19 @@ template <typename T>
 bool QuackFun::verifySame(stack<T> & s, queue<T> & q)
 {
     bool retval = true; // optional
+    if (s.empty())
+      return retval;
+
+    T stack_top = s.top();
+    s.pop();
+    retval = verifySame(s,q);
+    T queue_front = q.front();
+    if(stack_top!= queue_front)
+      retval = false;
+
+    s.push (stack_top);
+    q.pop();
+    q.push(queue.front);
     //T temp1; // rename me
     //T temp2; // rename :)
     
