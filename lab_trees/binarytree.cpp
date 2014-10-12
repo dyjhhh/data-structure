@@ -206,5 +206,3 @@ int BinaryTree<T>::sumDistances(Node* start, int sum)const
 
 	return -1;
 }
-
-
