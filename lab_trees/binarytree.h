@@ -186,7 +186,7 @@ class BinaryTree
 
 	void printPaths(Node* start, T array[], int arrayL) const;
 
-	int sumDistances(Node* start, int sum)const;
+	int sumDistances(Node * start, int sum) const;
 };
 
 #include "binarytree_given.cpp"
