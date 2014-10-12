@@ -133,6 +133,7 @@ class BinaryTree
          */
         int sumDistances() const;
     
+	
     private:
 
         Node* root;
@@ -142,7 +143,7 @@ class BinaryTree
          * Look at the private helpers for height and printLeftToRight
          *  as examples.
          */
-
+	
         /**
          * Private helper function for the public height function.
          * @param subRoot The current node in the recursion
@@ -177,6 +178,15 @@ class BinaryTree
          * @param subRoot The current node in the recursion
          */
         void clear(Node* subRoot);
+	
+	//made helper functions
+	void mirror(Node* start)const;
+	
+	bool isOrdered(Node* start)const;
+
+	void printPaths(Node* start, T array[], int arrayL) const;
+
+	int sumDistances(Node* start, int sum)const;
 };
 
 #include "binarytree_given.cpp"
