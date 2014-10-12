@@ -111,33 +111,38 @@ bool BinaryTree<T>::isOrdered() const
 template <typename T>
 bool BinaryTree<T>::isOrdered(Node* start)const
 {
-	bool ordered;	
-	if(start==NULL)
-	return true;	
+  bool statel = true;
+  bool stater = true;	
 	
 	if(start->left!=NULL)
 	{
-		if(start->elem<start->left->elem)
-		return false;
+		if(start->left->elem > start->elem)
+		  statel = false;		
+	  
 		
-		if(root->elem<start->left->elem)
-		return false;
-	}
-
-	if(start->right!=NULL)
-	{
-		if(start->elem>start->right->elem)
-		return false;
-		
-		if(root->elem>start->right->elem)
-		return false;	
+	        else
+		  {
+		    statel = isOrdered (start->left);
+		  }
 		
 	}
-		
-	ordered=isOrdered(start->left);
-	ordered=isOrdered(start->right);
 
-	return ordered;
+	if (start -> right != NULL)
+	  {
+	    if(start->right->elem < start -> elem)
+	      stater = false;
+
+	else
+	  {
+	    stater = isOrdered (start->right);
+	  }
+
+}
+
+	if (statel == true && stater == true)
+	  return true;
+	else
+	  return false;
 		
 }
 /**
@@ -194,15 +199,16 @@ void BinaryTree<T>::printPaths(Node* start, T array[], int arrayL) const
 template <typename T>
 int BinaryTree<T>::sumDistances() const
 {
-    // your code here
-	
-    return 19;
+   	
+  return 10;
 }
 
 
 template <typename T>
-int BinaryTree<T>::sumDistances(Node* start, int sum)const
+int BinaryTree<T>::sumDistances(Node * start, int sum) const
 {
 
-	return -1;
+  if(!start)
+    return 0;
+  return sum+sumDistance(start->left,sum+1)+sumDistances(start->right,sum+1);
 }
