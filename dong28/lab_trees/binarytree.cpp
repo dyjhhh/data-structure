@@ -76,6 +76,23 @@ template <typename T>
 void BinaryTree<T>::mirror()
 {
 	// your code here
+	mirror(root);
+}
+
+template <typename T>
+void BinaryTree<T>::mirror(Node* start)const
+{
+	
+	if(start==NULL)
+	return;	
+	
+	Node * temp;
+	mirror(start->left);
+	mirror(start->right);
+	temp=start->left;
+	start->left=start->right;
+	start->right=temp;
+
 }
 
 /**
@@ -87,9 +104,42 @@ template <typename T>
 bool BinaryTree<T>::isOrdered() const
 {
     // your code here
-	return false;
+	return isOrdered(root);
 }
 
+
+template <typename T>
+bool BinaryTree<T>::isOrdered(Node* start)const
+{
+	bool ordered;	
+	if(start==NULL)
+	return true;	
+	
+	if(start->left!=NULL)
+	{
+		if(start->elem<start->left->elem)
+		return false;
+		
+		if(root->elem<start->left->elem)
+		return false;
+	}
+
+	if(start->right!=NULL)
+	{
+		if(start->elem>start->right->elem)
+		return false;
+		
+		if(root->elem>start->right->elem)
+		return false;	
+		
+	}
+		
+	ordered=isOrdered(start->left);
+	ordered=isOrdered(start->right);
+
+	return ordered;
+		
+}
 /**
  * Prints out all the possible paths from the root of the tree to any leaf node.
  * That is, all sequences starting at the root node and continuing downwards, ending at a
@@ -99,9 +149,41 @@ bool BinaryTree<T>::isOrdered() const
 template <typename T>
 void BinaryTree<T>::printPaths() const
 {
-    // your code here
+	T array[height()];
+	int arrayL=0;
+	printPaths(root,array,arrayL);
 }
 
+
+template <typename T>
+void BinaryTree<T>::printPaths(Node* start, T array[], int arrayL) const
+{
+    // your code here
+	if(start==NULL)
+	return;
+	
+	if(start!=NULL)
+	{
+		array[arrayL]=start->elem;
+		arrayL++;
+	}
+	
+	if(start->right==NULL && start->left==NULL)
+	{
+		cout<<"Path:";		
+		for(int i=0;i<arrayL;i++)
+		cout<<" "<<array[i];
+		cout<<endl;
+		arrayL=0;
+	}
+
+		
+
+	printPaths(start->left,array,arrayL);
+	printPaths(start->right,array,arrayL);
+	
+		
+}
 /**
  * Each node in a tree has a distance from the root node - the depth of that node,
  *  or the number of edges along the path from that node to the root. This function returns
@@ -113,5 +195,16 @@ template <typename T>
 int BinaryTree<T>::sumDistances() const
 {
     // your code here
-    return -1;
+	
+    return 19;
 }
+
+
+template <typename T>
+int BinaryTree<T>::sumDistances(Node* start, int sum)const
+{
+
+	return -1;
+}
+
+
