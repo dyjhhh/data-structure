@@ -1,7 +1,9 @@
+svn: Working copy '/dev/shm/khattar2/cs225_current_checkout' locked
+svn: run 'svn cleanup' to remove locks (type 'svn help cleanup' for details)
 Monad Autograder
-Testing mp4 at 2014-10-12 12:26:56
+Testing mp4 at 2014-10-13 01:20:48
 
-"Worry loudly now or scream louder later." ~ Michael Lopp
+"I have never let my schooling interfere with my education." ~ Mark Twain
 
 Setting up test environment...
 Compiling...
