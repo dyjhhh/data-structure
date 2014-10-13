@@ -6,7 +6,9 @@
  * @author Chase Geigle
  * @date Fall 2012
  */
+#include<cstdint>
 #include "filler.h"
+using std::uint8_t;
 
 animation filler::dfs::fillSolid( PNG & img, int x, int y, 
         RGBAPixel fillColor, int tolerance, int frameFreq ) {
@@ -162,16 +164,16 @@ animation filler::fill( PNG & img, int x, int y,
 	OrderingStructure<int> y_dir;
 	int curr_x=0;
 	int curr_y=0;
-	int tmp_x=0;
-	int tmp_y=0;
+	size_t tmp_x=0;
+	size_t tmp_y=0;
 	int tolerance_check;
 	int used[img.width()][img.height()];
 	x_dir.add(x);
 	y_dir.add(y);
 	RGBAPixel asdf=(*img(x, y));
 
-	for(int b=0; b<img.width(); b++)
-	for(int c=0; c<img.height(); c++)
+	for(size_t b=0; b<img.width(); b++)
+	for(size_t c=0; c<img.height(); c++)
 		used[b][c]=0;
 
 	while(!x_dir.isEmpty() && !y_dir.isEmpty())
@@ -208,7 +210,7 @@ animation filler::fill( PNG & img, int x, int y,
 	tmp_x=curr_x;
 	}
 	
-	if(tmp_x>=0 && tmp_x<img.width() && tmp_y>=0 && tmp_y<img.height() && used[tmp_x][tmp_y]==0)
+	if(tmp_x<img.width() && tmp_y<img.height() && used[tmp_x][tmp_y]==0)
 {
 	tolerance_check=pow(asdf.red-img(tmp_x, tmp_y)->red, 2)+pow(asdf.blue-img(tmp_x, tmp_y)->blue, 2)+pow(asdf.green-img(tmp_x, tmp_y)->green, 2);
 
