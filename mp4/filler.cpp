@@ -14,7 +14,10 @@ animation filler::dfs::fillSolid( PNG & img, int x, int y,
      * @todo Your code here! You should replace the following line with a
      *  correct call to fill with the correct colorPicker parameter.
      */
-    return animation();
+	solidColorPicker dfsa(fillColor);
+	return fill( img, x,y,dfsa,tolerance,frameFreq );
+	
+   // return animation();
 }
 
 animation filler::dfs::fillGrid( PNG & img, int x, int y, 
@@ -23,7 +26,9 @@ animation filler::dfs::fillGrid( PNG & img, int x, int y,
      * @todo Your code here! You should replace the following line with a
      *  correct call to fill with the correct colorPicker parameter.
      */
-    return animation();
+   gridColorPicker dfsb(gridColor, gridSpacing);
+	return fill( img, x,y,dfsb,tolerance,frameFreq );
+	// return animation();
 }
 
 animation filler::dfs::fillGradient( PNG & img, int x, int y, 
@@ -33,7 +38,9 @@ animation filler::dfs::fillGradient( PNG & img, int x, int y,
      * @todo Your code here! You should replace the following line with a
      *  correct call to fill with the correct colorPicker parameter.
      */
-    return animation();
+  gradientColorPicker dfsc(fadeColor1,fadeColor2,radius,x,y);
+	return fill( img, x,y,dfsc,tolerance,frameFreq );
+//  return animation();
 }
 
 animation filler::dfs::fill( PNG & img, int x, int y, 
@@ -43,7 +50,8 @@ animation filler::dfs::fill( PNG & img, int x, int y,
      *  correct call to filler::fill with the correct template parameter
      *  indicating the ordering structure to be used in the fill.
      */
-    return animation();
+	return filler::fill<Stack>(img,x,y,fillColor,tolerance,frameFreq); 
+ //  return animation();
 }
 
 animation filler::bfs::fillSolid( PNG & img, int x, int y, 
@@ -52,7 +60,9 @@ animation filler::bfs::fillSolid( PNG & img, int x, int y,
      * @todo Your code here! You should replace the following line with a
      *  correct call to fill with the correct colorPicker parameter.
      */
-    return animation();
+	solidColorPicker bfsa(fillColor);
+	return fill( img, x,y,bfsa,tolerance,frameFreq );
+  //  return animation();
 }
 
 animation filler::bfs::fillGrid( PNG & img, int x, int y, 
@@ -61,7 +71,9 @@ animation filler::bfs::fillGrid( PNG & img, int x, int y,
      * @todo Your code here! You should replace the following line with a
      *  correct call to fill with the correct colorPicker parameter.
      */
-    return animation();
+	gridColorPicker bfsb(gridColor, gridSpacing);
+	return fill( img, x,y,bfsb,tolerance,frameFreq );
+   // return animation();
 }
 
 animation filler::bfs::fillGradient( PNG & img, int x, int y, 
@@ -71,7 +83,9 @@ animation filler::bfs::fillGradient( PNG & img, int x, int y,
      * @todo Your code here! You should replace the following line with a
      *  correct call to fill with the correct colorPicker parameter.
      */
-    return animation();
+	gradientColorPicker bfsc(fadeColor1,fadeColor2,radius,x,y);
+	return fill( img, x,y,bfsc,tolerance,frameFreq );
+    //return animation();
 }
 
 animation filler::bfs::fill( PNG & img, int x, int y, 
@@ -81,7 +95,8 @@ animation filler::bfs::fill( PNG & img, int x, int y,
      *  correct call to filler::fill with the correct template parameter
      *  indicating the ordering structure to be used in the fill.
      */
-    return animation();
+	return filler::fill<Queue>(img,x,y,fillColor,tolerance,frameFreq);
+   // return animation();
 }
 
 template <template <class T> class OrderingStructure>
@@ -141,5 +156,84 @@ animation filler::fill( PNG & img, int x, int y,
      *        have been checked. So if frameFreq is set to 1, a pixel should
      *        be filled every frame.
      */
-    return animation();
+	int frames=0;
+	animation a;
+	OrderingStructure<int> x_dir;
+	OrderingStructure<int> y_dir;
+	int curr_x=0;
+	int curr_y=0;
+	int tmp_x=0;
+	int tmp_y=0;
+	int tolerance_check;
+	int used[img.width()][img.height()];
+	x_dir.add(x);
+	y_dir.add(y);
+	RGBAPixel asdf=(*img(x, y));
+
+	for(int b=0; b<img.width(); b++)
+	for(int c=0; c<img.height(); c++)
+		used[b][c]=0;
+
+	while(!x_dir.isEmpty() && !y_dir.isEmpty())
+	{
+		if(!x_dir.isEmpty() && !y_dir.isEmpty())
+		{
+		curr_x=x_dir.remove();
+		curr_y=y_dir.remove();
+		}
+	//check tolerance
+	if(used[curr_x][curr_y]==0)
+	{
+	for(int i=1; i<5; i++)
+	{
+//cout<<"HI"<<endl;
+	if(i==1)
+	{
+	tmp_y=curr_y;
+	tmp_x=curr_x+1;
+	}
+	if(i==2)
+	{
+	tmp_y=curr_y+1;
+	tmp_x=curr_x;
+	}
+		if(i==3)
+		{
+		tmp_y=curr_y;
+		tmp_x=curr_x-1;
+		}
+	if(i==4)
+	{
+	tmp_y=curr_y-1;
+	tmp_x=curr_x;
+	}
+	
+	if(tmp_x>=0 && tmp_x<img.width() && tmp_y>=0 && tmp_y<img.height() && used[tmp_x][tmp_y]==0)
+{
+	tolerance_check=pow(asdf.red-img(tmp_x, tmp_y)->red, 2)+pow(asdf.blue-img(tmp_x, tmp_y)->blue, 2)+pow(asdf.green-img(tmp_x, tmp_y)->green, 2);
+
+	//adding if tolerance is O.K.
+	if(tolerance_check<=tolerance)
+	{
+	x_dir.add(tmp_x);
+	y_dir.add(tmp_y);
+	}
+	}
+	}
+	}
+	if(used[curr_x][curr_y]==0)
+	{
+	(*img(curr_x, curr_y))=fillColor(curr_x, curr_y);
+	used[curr_x][curr_y]=1;
+	frames++;
+	if(frames==frameFreq)
+	{
+	frames=0;
+	a.addFrame(img);
+	}
+	}
+	
+	}
+	return a;
+	
 }
