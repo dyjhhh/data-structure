@@ -1,9 +1,9 @@
 svn: Working copy '/dev/shm/khattar2/cs225_current_checkout' locked
 svn: run 'svn cleanup' to remove locks (type 'svn help cleanup' for details)
 Monad Autograder
-Testing mp4 at 2014-10-13 01:20:48
+Testing mp4 at 2014-10-14 02:08:27
 
-"I have never let my schooling interfere with my education." ~ Mark Twain
+"And I'm sitting there hallucinating a bird on my pillow from the benadryl and I think to myself ... 'I need to write a poem about Makefiles'." ~ Lisa Sproat
 
 Setting up test environment...
 Compiling...
@@ -41,30 +41,30 @@ testThroughStackQueue  . . . . . [2 pts] - passed
 testEnqueueConstantTime  . . . . [2 pts] - passed
 testDequeueConstantTime  . . . . [2 pts] - passed
 testEnqueuePeekDequeueTime . . . [2 pts] - passed
-solid_picker_15  . . . . . . . . [4 pts] - FAILED
-gradient_picker_16 . . . . . . . [4 pts] - FAILED
-gradient_picker_17 . . . . . . . [4 pts] - FAILED
-DFS_solid  . . . . . . . . . . . [4 pts] - FAILED
-BFS_solid  . . . . . . . . . . . [4 pts] - FAILED
-DFS_grid . . . . . . . . . . . . [4 pts] - FAILED
-BFS_grid . . . . . . . . . . . . [4 pts] - FAILED
-DFS_gradient . . . . . . . . . . [4 pts] - FAILED
-BFS_gradient . . . . . . . . . . [4 pts] - FAILED
-DFS_18 . . . . . . . . . . . . . [2 pts] - FAILED
-DFS_19 . . . . . . . . . . . . . [2 pts] - FAILED
-DFS_20 . . . . . . . . . . . . . [2 pts] - FAILED
-DFS_21 . . . . . . . . . . . . . [2 pts] - FAILED
-DFS_22 . . . . . . . . . . . . . [2 pts] - FAILED
-DFS_23 . . . . . . . . . . . . . [2 pts] - FAILED
-BFS_24 . . . . . . . . . . . . . [2 pts] - FAILED
-BFS_25 . . . . . . . . . . . . . [2 pts] - FAILED
-BFS_26 . . . . . . . . . . . . . [2 pts] - FAILED
-BFS_27 . . . . . . . . . . . . . [2 pts] - FAILED
-BFS_28 . . . . . . . . . . . . . [2 pts] - FAILED
-BFS_29 . . . . . . . . . . . . . [2 pts] - FAILED
+solid_picker_15  . . . . . . . . [4 pts] - passed
+gradient_picker_16 . . . . . . . [4 pts] - passed
+gradient_picker_17 . . . . . . . [4 pts] - passed
+DFS_solid  . . . . . . . . . . . [4 pts] - passed
+BFS_solid  . . . . . . . . . . . [4 pts] - passed
+DFS_grid . . . . . . . . . . . . [4 pts] - passed
+BFS_grid . . . . . . . . . . . . [4 pts] - passed
+DFS_gradient . . . . . . . . . . [4 pts] - passed
+BFS_gradient . . . . . . . . . . [4 pts] - passed
+DFS_18 . . . . . . . . . . . . . [2 pts] - passed
+DFS_19 . . . . . . . . . . . . . [2 pts] - passed
+DFS_20 . . . . . . . . . . . . . [2 pts] - passed
+DFS_21 . . . . . . . . . . . . . [2 pts] - passed
+DFS_22 . . . . . . . . . . . . . [2 pts] - passed
+DFS_23 . . . . . . . . . . . . . [2 pts] - passed
+BFS_24 . . . . . . . . . . . . . [2 pts] - passed
+BFS_25 . . . . . . . . . . . . . [2 pts] - passed
+BFS_26 . . . . . . . . . . . . . [2 pts] - passed
+BFS_27 . . . . . . . . . . . . . [2 pts] - passed
+BFS_28 . . . . . . . . . . . . . [2 pts] - passed
+BFS_29 . . . . . . . . . . . . . [2 pts] - passed
 
 
 Total score...
 ================================================================
-TOTAL SCORE: 40
+TOTAL SCORE: 100
 
