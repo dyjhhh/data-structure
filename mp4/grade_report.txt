@@ -1,9 +1,9 @@
 svn: Working copy '/dev/shm/khattar2/cs225_current_checkout' locked
 svn: run 'svn cleanup' to remove locks (type 'svn help cleanup' for details)
 Monad Autograder
-Testing mp4 at 2014-10-14 02:08:27
+Testing mp4 at 2014-10-15 01:04:34
 
-"And I'm sitting there hallucinating a bird on my pillow from the benadryl and I think to myself ... 'I need to write a poem about Makefiles'." ~ Lisa Sproat
+"I just don't trust easily, and for good reasons... which are my own." ~ Carth Onasi
 
 Setting up test environment...
 Compiling...
