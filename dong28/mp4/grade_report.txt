@@ -1,9 +1,7 @@
-svn: Working copy '/dev/shm/khattar2/cs225_current_checkout' locked
-svn: run 'svn cleanup' to remove locks (type 'svn help cleanup' for details)
 Monad Autograder
-Testing mp4 at 2014-10-15 01:04:34
+Testing mp4 at 2014-10-16 01:09:34
 
-"I just don't trust easily, and for good reasons... which are my own." ~ Carth Onasi
+"Simplicity is the ultimate sophistication." ~ Leonardo da Vinci
 
 Setting up test environment...
 Compiling...
