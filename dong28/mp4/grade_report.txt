@@ -1,7 +1,7 @@
 Monad Autograder
-Testing mp4 at 2014-10-16 01:09:34
+Testing mp4 at 2014-10-17 01:23:07
 
-"Simplicity is the ultimate sophistication." ~ Leonardo da Vinci
+"I would build pyramids, if I were Pharoah." ~ Kyle Johnson
 
 Setting up test environment...
 Compiling...
