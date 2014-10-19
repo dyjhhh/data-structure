@@ -167,7 +167,7 @@ string HuffmanTree::decodeFile( BinaryFileReader & bfile ) {
 }
 
 void HuffmanTree::decode( stringstream & ss, BinaryFileReader & bfile ) {
-	//TreeNode * current = root;
+	TreeNode * current = root;
 	while( bfile.hasBits() ) {
 		/**
 		 * @todo Your code here!
