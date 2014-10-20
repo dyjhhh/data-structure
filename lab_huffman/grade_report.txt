@@ -1,0 +1,28 @@
+Monad Autograder
+Testing lab_huffman at 2014-10-20 01:53:02
+
+"The primary purpose of the DATA statement is to give names to constants; instead of referring to pi as 3.141592653589793 at every appearance, the variable PI can be given that value with a DATA statement and used instead of the longer form of the constant. This also simplifies modifying the program, should the value of pi change." ~ FORTRAN manual for Xerox computers
+
+Setting up test environment...
+Compiling...
+================================================================
+
+
+Running tests...
+================================================================
+test_encoder_binary_4  . . . . [20 pts] - passed
+test_encoder_binary_8  . . . . [20 pts] - passed
+test_encoder_valgrind_2 (asan) [6 pts]  - passed
+test_encoder_writetree_4 . . . [2 pts]  - passed
+test_encoder_writetree_8 . . . [2 pts]  - passed
+test_decode_4  . . . . . . . . [20 pts] - passed
+test_decode_8  . . . . . . . . [20 pts] - passed
+test_decode_readtree_4 . . . . [2 pts]  - passed
+test_decode_readtree_8 . . . . [2 pts]  - passed
+test_the_works (asan)  . . . . [6 pts]  - passed
+
+
+Total score...
+================================================================
+TOTAL SCORE: 100
+
