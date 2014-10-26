@@ -11,7 +11,7 @@
 #ifndef QUADTREE_H
 #define QUADTREE_H
  
-#include "easypng.h"
+#include "png.h"
  
 class Quadtree
 {
