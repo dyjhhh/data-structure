@@ -47,8 +47,7 @@ PronounceDict::PronounceDict(const string& pronun_dict_filename)
             {   
                 /* Associate the word with the rest of the line
                  * (its pronunciation). */
-                dict[*line_begin] = vector< string > (std::next(line_begin, 1), 
-                                                      line_end);
+                dict[*line_begin] = vector< string > (++line_begin,line_end);
             }
         }
     }
