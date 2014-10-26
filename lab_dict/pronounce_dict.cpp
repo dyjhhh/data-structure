@@ -15,6 +15,7 @@
 #include <cstring>
 #include <algorithm>
 
+//using namespace std;
 using std::string;
 using std::map;
 using std::vector;
@@ -33,17 +34,20 @@ PronounceDict::PronounceDict(const string& pronun_dict_filename)
 {
     ifstream pronun_dict_file(pronun_dict_filename);
     string line;
-    if(pronun_dict_file.is_open()) {
-        while(getline(pronun_dict_file, line)) {
+    if(pronun_dict_file.is_open())
+    {
+        while(getline(pronun_dict_file, line))
+        {
             /* Used to break the line by whitespace. The CMU Dict does this for
              * separating words from their pronunciations. */
             stringstream line_ss(line);
             istream_iterator< string > line_begin(line_ss);
             istream_iterator< string > line_end;
-            if(line[0] != '#' && *line_begin != ";;;") {   
+            if(line[0] != '#' && *line_begin != ";;;")
+            {   
                 /* Associate the word with the rest of the line
                  * (its pronunciation). */
-                dict[*line_begin] = vector< string > (++line_begin, 
+                dict[*line_begin] = vector< string > (std::next(line_begin, 1), 
                                                       line_end);
             }
         }
@@ -77,5 +81,41 @@ PronounceDict::PronounceDict(const map< string, vector< string > >&
 bool PronounceDict::homophones(const string& word1, const string& word2) const
 {
     /* Your code goes here! */
+    //std::cout<<"reached";
+    		
+    
+    string w1=word1;
+    //cout<<"w1 before "<<w1;
+    string w2=word2;
+   std::transform(w1.begin(), w1.end(), w1.begin(), toupper);
+    //std::cout<<"w1"<<w1;
+   std::transform(w2.begin(), w2.end(), w2.begin(), toupper);
+   
+    auto lookup1=dict.find(w1);
+    if(lookup1==dict.end())
+    {	//std::cout<<"1st";
+    	return false;
+    }
+    auto lookup2=dict.find(w2);
+    if(lookup2==dict.end())	
+    	{	//std::cout<<"2nd";
+    		return false;
+    	}
+    	//string key1="";
+    	//string key2="";
+    for(auto it=lookup1->second.begin(),it2=lookup2->second.begin();it!=lookup1->second.end();it++,it2++)
+    	{
+    		//std::cout<<"reached";
+    		if(*it!=*it2)
+    			return false;	
+    
+    	}	
+    	//for(auto it2=lookup2->second.begin();it2!=lookup2->second.end();it2++)
+    	//	{	string k=*it2;
+    			//strcat(key2,k);	
+   	//	}
+    //if(strcmp(key1,key2) == 0)
+    //return true;		
+
     return true;
 }
