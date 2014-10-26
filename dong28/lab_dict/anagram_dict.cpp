@@ -10,7 +10,8 @@
 
 #include <algorithm> /* I wonder why this is included... */
 #include <fstream>
-
+#include <iostream>
+using namespace std;
 using std::string;
 using std::vector;
 using std::ifstream;
@@ -23,7 +24,19 @@ using std::ifstream;
 AnagramDict::AnagramDict(const string& filename)
 {
     /* Your code goes here! */
-}
+	ifstream words(filename);
+	string word;
+	
+	if(words.is_open())
+	{	
+    		/* Reads a line from words into word until the file ends. */
+    		while(getline(words, word))
+    		{	string val=word;
+        		std::sort(val.begin(), val.end());
+			dict[val].push_back(word);
+    		}
+	}
+}	
 
 /** 
  * Constructs an AnagramDict from a vector of words.
@@ -32,6 +45,15 @@ AnagramDict::AnagramDict(const string& filename)
 AnagramDict::AnagramDict(const vector< string >& words)
 {
     /* Your code goes here! */
+    std::vector<string>::const_iterator it;
+    for(it=words.begin();it<words.end();it++)
+    {
+    	string val=*it;
+    	std::sort(val.begin(), val.end());
+    	dict[val].push_back(*it);
+    }
+    
+	
 }
 
 /**
@@ -43,9 +65,15 @@ AnagramDict::AnagramDict(const vector< string >& words)
 vector< string > AnagramDict::get_anagrams(const string& word) const
 {
     /* Your code goes here! */
-    return vector< string >();
-}       
-
+    string val=word;
+    std::sort(val.begin(), val.end());
+    auto lookup = dict.find(val);
+ 	if(lookup!=dict.end())
+ 	return lookup->second;
+       else
+       	 return vector< string >();
+	
+}
 /**
  * @return A vector of vectors of strings. Each inner vector contains
  * the "anagram siblings", i.e. words that are anagrams of one another.
@@ -55,7 +83,15 @@ vector< string > AnagramDict::get_anagrams(const string& word) const
 vector< vector< string > > AnagramDict::get_all_anagrams() const
 {
     /* Your code goes here! */
-    return vector< vector < string > >();
+    vector< vector < string > > myvector;
+    
+    for(auto it=dict.begin();it!=dict.end();it++)
+    	{       //cout<<"data\n"<< it->second;
+    		if(it->second.size()>1)
+    		myvector.push_back(it->second);
+    	}
+   
+    return myvector;
+    //else
+    // return vector< vector < string > >();
 }
-
-
