@@ -1,0 +1,43 @@
+Monad Autograder
+Testing mp5 at 2014-10-26 12:24:05
+
+"If you just rely on one model, you tend to amputate reality to make it fit your model." ~ David Brooks
+
+Setting up test environment...
+Compiling...
+================================================================
+In file included from unit_tests.cpp:10:
+./quadtree.h:14:10: fatal error: 'easypng.h' file not found
+#include "easypng.h"
+         ^
+1 error generated.
+In file included from quadtree.cpp:11:
+./quadtree.h:14:10: fatal error: 'easypng.h' file not found
+#include "easypng.h"
+         ^
+1 error generated.
+make: *** [quadtree.o] Error 1
+make: *** Waiting for unfinished jobs....
+In file included from quadtree_given.cpp:7:
+./quadtree.h:14:10: fatal error: 'easypng.h' file not found
+#include "easypng.h"
+         ^
+1 error generated.
+make: *** [quadtree_given.o] Error 1
+In file included from unit_tests.cpp:10:
+./quadtree.h:14:10: fatal error: 'easypng.h' file not found
+#include "easypng.h"
+         ^
+1 error generated.
+ld: no input files
+
+
+Running tests...
+================================================================
+Could not execute test cases
+
+
+Total score...
+================================================================
+TOTAL SCORE: 0
+
