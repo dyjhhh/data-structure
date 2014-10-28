@@ -1,7 +1,7 @@
 Monad Autograder
-Testing mp5 at 2014-10-27 01:31:31
+Testing mp5 at 2014-10-28 01:43:58
 
-"I have never let my schooling interfere with my education." ~ Mark Twain
+"It always takes longer than you expect, even when you take into account Hofstadter's Law." ~ Hofstadter's Law
 
 Setting up test environment...
 Compiling...
