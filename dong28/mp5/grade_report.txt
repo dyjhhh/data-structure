@@ -1,7 +1,7 @@
 Monad Autograder
-Testing mp5 at 2014-10-28 01:43:58
+Testing mp5 at 2014-10-29 02:02:03
 
-"It always takes longer than you expect, even when you take into account Hofstadter's Law." ~ Hofstadter's Law
+"Doing more things faster is no substitute for doing the right things." ~ Stephen R. Covey
 
 Setting up test environment...
 Compiling...
