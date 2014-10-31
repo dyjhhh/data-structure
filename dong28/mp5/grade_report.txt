@@ -1,7 +1,9 @@
+svn: Working copy '/dev/shm/khattar2/cs225_current_checkout' locked
+svn: run 'svn cleanup' to remove locks (type 'svn help cleanup' for details)
 Monad Autograder
-Testing mp5 at 2014-10-30 02:28:44
+Testing mp5 at 2014-10-31 10:01:35
 
-"More than the act of testing, the act of designing tests is one of the best bug preventers known. The thinking that must be done to create a useful test can discover and eliminate bugs before they are coded - indeed, test-design thinking can discover and eliminate bugs at every stage in the creation of software, from conception to specification, to design, coding and the rest." ~ Boris Bezier
+"Microsoft has a new version out, Windows XP, which according to everybody is the 'most reliable Windows ever.' To me, this is like saying that asparagus is 'the most articulate vegetable ever.'" ~ Dave Barry
 
 Setting up test environment...
 Compiling...
@@ -10,7 +12,7 @@ Compiling...
 
 Running tests...
 ================================================================
-test_default_ctor  . . . . [1 pts] - passed
+test_default_ctor  . . . . [1 pts] - FAILED
 test_ctor_1  . . . . . . . [1 pts] - passed
 test_ctor_2  . . . . . . . [2 pts] - passed
 test_buildTree_1 . . . . . [2 pts] - passed
@@ -63,5 +65,5 @@ test_const_correctness . . [4 pts] - FAILED
 
 Total score...
 ================================================================
-TOTAL SCORE: 96
+TOTAL SCORE: 95
 
