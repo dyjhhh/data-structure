@@ -1,8 +1,7 @@
-Grading revision r41620 by khattar2, dated 2014-10-30 04:58:38.000172429 -0500 CDT
 Monad Autograder
-Testing mp5 at 2014-10-31 11:20:42
+Testing mp5 at 2014-11-01 00:58:31
 
-"If you think you can do it all, you're thinking too small." ~ Michael Lopp
+"The most exciting phrase to hear in science - the one that heralds new discoveries - is not 'Eureka!' but 'That's funny....'" ~ Isaac Asimov
 
 Setting up test environment...
 Compiling...
