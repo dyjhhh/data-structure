@@ -1,0 +1,115 @@
+Monad Autograder
+Testing mp5 at 2014-11-02 01:22:45
+
+"I've seen it on Google Maps; I think I know what I'm talking about" ~ Kyle Johnson
+
+Setting up test environment...
+Compiling...
+================================================================
+
+
+Running tests...
+================================================================
+test_default_ctor  . . . . [1 pts] - passed
+test_ctor_1  . . . . . . . [1 pts] - passed
+test_ctor_2  . . . . . . . [2 pts] - passed
+test_buildTree_1 . . . . . [2 pts] - passed
+test_buildTree_2 . . . . . [1 pts] - passed
+test_buildTree_3 . . . . . [2 pts] - passed
+test_cctor_1 . . . . . . . [1 pts] - passed
+test_cctor_2 . . . . . . . [1 pts] - passed
+test_cctor_3 . . . . . . . [1 pts] - passed
+test_cctor_4 . . . . . . . [1 pts] - passed
+test_assign_op_1 . . . . . [1 pts] - passed
+test_assign_op_2 . . . . . [1 pts] - passed
+test_assign_op_3 . . . . . [1 pts] - passed
+test_assign_op_4 . . . . . [1 pts] - passed
+test_getPixel_1  . . . . . [1 pts] - passed
+test_getPixel_2  . . . . . [2 pts] - passed
+test_getPixel_3  . . . . . [2 pts] - passed
+test_getPixel_4  . . . . . [2 pts] - passed
+test_decompress_unpruned_1 [1 pts] - passed
+test_decompress_unpruned_2 [1 pts] - passed
+test_decompress_unpruned_3 [1 pts] - passed
+test_decompress_unpruned_4 [1 pts] - passed
+time_getPixel_logn . . . . [4 pts] - passed
+time_decompress_n (asan) . [4 pts] - passed
+valgrind_big3 (asan) . . . [4 pts] - passed
+test_clockwiseRotate_1 . . [1 pts] - passed
+test_clockwiseRotate_2 . . [1 pts] - passed
+test_clockwiseRotate_3 . . [2 pts] - passed
+test_clockwiseRotate_4 . . [2 pts] - passed
+test_prune_1 . . . . . . . [2 pts] - passed
+test_prune_2 . . . . . . . [3 pts] - passed
+test_prune_3 . . . . . . . [2 pts] - passed
+test_prune_4 . . . . . . . [5 pts] - passed
+test_prune_copy  . . . . . [2 pts] - passed
+test_prune_rotate  . . . . [2 pts] - passed
+test_prune_getPixel  . . . [3 pts] - passed
+test_pruneSize_1 . . . . . [2 pts] - passed
+test_pruneSize_2 . . . . . [2 pts] - passed
+test_pruneSize_3 . . . . . [2 pts] - passed
+test_pruneSize_4 . . . . . [2 pts] - passed
+test_pruneSize_5 . . . . . [2 pts] - passed
+test_idealPrune_1  . . . . [2 pts] - passed
+test_idealPrune_2  . . . . [3 pts] - passed
+test_idealPrune_3  . . . . [2 pts] - passed
+test_idealPrune_4  . . . . [5 pts] - passed
+val_clockwiseRotate (asan) [2 pts] - passed
+val_prune (asan) . . . . . [4 pts] - passed
+val_idealPrune (asan)  . . [3 pts] - passed
+test_const_correctness . . [4 pts] - FAILED: unit_tests.cpp:515: [system("clang++ -stdlib=libc++ -std=c++1y -c -w main2.cpp") => 1] != [0 => 0]
+
+
+Total score...
+================================================================
+TOTAL SCORE: 96
+
+
+
+Detailed test output...
+================================================================
+----------------------------------------------------------------
+test_const_correctness [4 points]
+Result: FAILED: unit_tests.cpp:515: [system("clang++ -stdlib=libc++ -std=c++1y -c -w main2.cpp") => 1] != [0 => 0]
+Took 0ms (20000ms timeout)
+Output:
+----------------------------------------------------------------
+main2.cpp:24:25: error: no matching member function for call to 'decompress'
+   PNG temp = constTree.decompress();
+              ~~~~~~~~~~^~~~~~~~~~
+./quadtree.h:35:13: note: candidate function not viable: 'this' argument has type 'const Quadtree', but method is not marked const
+        PNG decompress();
+            ^
+./quadtree.h:77:14: note: candidate function not viable: requires 6 arguments, but 0 were provided
+        void decompress(PNG & composite, QuadtreeNode * curr, int x1, int x2, int y1, int y2);
+             ^
+main2.cpp:25:19: error: member function 'pruneSize' not viable: 'this' argument has type 'const Quadtree', but function is not marked const
+   int moretemp = constTree.pruneSize(74);
+                  ^~~~~~~~~
+./quadtree.h:40:13: note: 'pruneSize' declared here
+        int pruneSize(int tolerance);
+            ^
+main2.cpp:26:15: error: member function 'idealPrune' not viable: 'this' argument has type 'const Quadtree', but function is not marked const
+   moretemp = constTree.idealPrune(102);
+              ^~~~~~~~~
+./quadtree.h:41:13: note: 'idealPrune' declared here
+        int idealPrune(int numLeaves); 
+            ^
+main2.cpp:27:36: error: no matching member function for call to 'getPixel'
+   RGBAPixel temppixel = constTree.getPixel(3, 3);
+                         ~~~~~~~~~~^~~~~~~~
+./quadtree.h:32:19: note: candidate function not viable: 'this' argument has type 'const Quadtree', but method is not marked const
+        RGBAPixel getPixel(int x, int y);
+                  ^
+./quadtree.h:74:19: note: candidate function not viable: requires 6 arguments, but 2 were provided
+        RGBAPixel getPixel(int x, int y, QuadtreeNode * curr, int xlim, int ylim, int width);
+                  ^
+4 errors generated.
+
+
+----------------------------------------------------------------
+Total score...
+================================================================
+TOTAL SCORE: 96
+
