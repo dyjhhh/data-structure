@@ -1,7 +1,7 @@
 Monad Autograder
-Testing lab_avl at 2014-11-03 00:44:37
+Testing lab_avl at 2014-11-03 11:09:01
 
-"I just don't trust easily, and for good reasons... which are my own." ~ Carth Onasi
+"Should array indices start at 0 or 1? My compromise of 0.5 was rejected without, I thought, proper consideration." ~ Stan Kelly-Bootle
 
 Setting up test environment...
 Compiling...
