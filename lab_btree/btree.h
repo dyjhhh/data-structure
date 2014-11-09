@@ -58,6 +58,7 @@ class BTree
             return lhs.key < rhs.key; 
         }
 
+
         /**
          * Less than operator for a DataPair and a K.
          * @param lhs The left hand side (DataPair) of the < operator.
@@ -66,7 +67,7 @@ class BTree
          */
         inline friend bool operator<(const DataPair& lhs, const K& rhs)
         {
-            return lhs.key < rhs; 
+            return lhs.key < rhs;
         }        
 
          /**
@@ -198,26 +199,32 @@ class BTree
         {
             std::string node_str;
             node_str.reserve(2 * (4 * n.elements.size() + 1));
-            for(auto& elem : n.elements) {
+            for(auto& elem : n.elements)
+            {
                 std::stringstream temp;
                 temp << elem.key;
                 node_str += "| ";
                 node_str += temp.str();
                 node_str += " ";
             }
-            if(! n.elements.empty()) {
+            if(! n.elements.empty())
+            {
                 node_str += "|";
             }
             node_str += "\n";
-            for(auto& child : n.children) {
-                if(child == nullptr) {
+            for(auto& child : n.children)
+            {
+                if(child == nullptr)
+                {
                     node_str += "N   ";
                 }
-                else {
+                else
+                {
                     node_str += "*   ";
                 }
             }
-            if(n.children.empty()) {
+            if(n.children.empty())
+            {
                 node_str += "no children";
             }
 
@@ -355,35 +362,38 @@ class BTree
 template <class T, class C>
 size_t insertion_idx(const std::vector< T >& elements, const C& val)
 {
- /*
-   size_t position=0;
-   
-    for(auto it=elements.begin();it!=elements.end();it++)
-    {	position++;
-    	if(*it>val || *it==val)
-    	{
-    		return position-1;	
-    	}	
+    /* TODO Your code goes here! */
+    // larger than the largest value in the vector
+    if (val > elements.back()) {
+        return elements.size()+1;
     }
-    return  position;	
-*/
-	auto first=0;
-	auto last=0;
-	if(elements.size()>0)
-		last=elements.size()-1;
-	else
-		return 0;	
-	while(first<=last)
-	{
-		int mid=(first+last)/2;
-		if(elements.at(mid)>val)
-			last=mid-1;
-		else if(elements.at(mid)<val)
-			first=mid+1;
-		else if(elements.at(mid)==val)
-			return mid;	
-	}
-	
+    
+    //smaller than the smallest value
+    if (val < elements.front()) {
+        return 1;
+    }
+    
+    //binary search
+    unsigned int hi = elements.size();
+    unsigned int lo = 0;
+    unsigned int mid = (hi+lo)/2;
+    
+    while(hi != lo)
+    {
+        if (elements[mid] == val) return elements.size()+mid;
+        if (elements[mid] > val)
+        {
+            hi = mid;
+            mid = (hi+lo)/2;
+        }
+        if (elements[mid] < val)
+        {
+            lo = mid;
+            mid = (hi+lo)/2;
+        }
+    }
+    
+    return mid;
 }
 
 #include "btree_given.cpp"
