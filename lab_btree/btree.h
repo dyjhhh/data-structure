@@ -328,14 +328,22 @@ unsigned int order) const;
 template <class T, class C>
 size_t insertion_idx(const std::vector< T >& elements, const C& val)
 {
-/* TODO Your code goes here! */
-for(int i = 0;i<elements.size();i++){
-if(val<elements[i]/*||val==elements[i]*/){
-//std::cout<<i<<std::endl;
-return i;
-}
-}
-return elements.size();
+auto first=0;
+	auto last=0;
+	if(elements.size()>0)
+		last=elements.size()-1;
+	else
+		return 0;	
+	while(first<=last)
+	{
+		int mid=(first+last)/2;
+		if(elements.at(mid)>val)
+			last=mid-1;
+		else if(elements.at(mid)<val)
+			first=mid+1;
+		else if(elements.at(mid)==val)
+			return mid;	
+	}
 }
 #include "btree_given.cpp"
 #include "btree.cpp"
