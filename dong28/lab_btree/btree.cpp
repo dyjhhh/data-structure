@@ -1,4 +1,3 @@
- 
 /**
  * @file btree.cpp
  * Implementation of a B-tree class which can be used as a generic dictionary
@@ -8,9 +7,9 @@
  * @author Matt Joras
  * @date Winter 2013
  */
- 
+
 using std::vector;
- 
+
 /**
  * Finds the value associated with a given key.
  * @param key The key to look up.
@@ -21,7 +20,7 @@ V BTree<K, V>::find(const K& key) const
 {
     return root == nullptr ? V() : find(root, key);
 }
- 
+
 /**
  * Private recursive version of the find function.
  * @param subroot A reference of a pointer to the current BTreeNode.
@@ -31,27 +30,23 @@ V BTree<K, V>::find(const K& key) const
 template <class K, class V>
 V BTree<K, V>::find(const BTreeNode* subroot, const K& key) const
 {
-    /* TODO Your code goes here! */
-  //  int ind = insertion_idx (subroot->elements,key);
-  //  if (ind
- 
-    //TODO
-    int  first_larger_idx = insertion_idx(subroot->elements, key);
-    if (!(first_larger_idx>=subroot->elements.size() or first_larger_idx<0) )
-    {
-    if (subroot->elements[first_larger_idx].key == key)
-      return ((subroot->elements)[first_larger_idx]).value;
-    }
-    else if (subroot->is_leaf == true)
+    if (subroot->is_leaf) {
         return V();
-   
+    }
+    size_t index = insertion_idx(subroot->elements, key);
+    if (subroot->elements.size() < index) {
+        return subroot->elements[index-subroot->elements.size()].value;
+    }
     else
-      return find (subroot->children[first_larger_idx],key);
+    {
+        return find(subroot->children[index], key);
+    }
+    /* TODO Your code goes here! */
     /* If first_larger_idx is a valid index and the key there is the key we
      * are looking for, we are done. */
- 
+
     /* Otherwise, we need to figure out which child to explore. For this we
-     * can actually just use first_larger_idx directly. E.g.
+     * can actually just use first_larder_idx directly. E.g.
      * | 1 | 5 | 7 | 8 |
      * Suppose we are looking for 6. first_larger_idx is 2. This means we want to
      * explore the child between 5 and 7. The children vector has a pointer for
@@ -60,9 +55,8 @@ V BTree<K, V>::find(const BTreeNode* subroot, const K& key) const
      * a leaf and we didn't find the key in it, then we have failed to find it
      * anywhere in the tree and return the default V.
      */
-        return V();
 }
- 
+
 /**
  * Inserts a key and value into the BTree. If the key is already in the
  * tree do nothing.
@@ -72,23 +66,27 @@ V BTree<K, V>::find(const BTreeNode* subroot, const K& key) const
 template <class K, class V>
 void BTree<K, V>::insert(const K& key, const V& value)
 {
+    std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~" <<  std::endl;
+
     /* Make the root node if the tree is empty. */
-    if(root == nullptr) {
+    if(root == nullptr)
+    {
         root = new BTreeNode(true, order);
     }
     insert(root, DataPair(key, value));
     /* Increase height by one by tossing up one element from the old
      * root node. */
-    if(root->elements.size() >= order) {
+    if(root->elements.size() >= order)
+    {
         BTreeNode* new_root = new BTreeNode(false, order);
         new_root->children.push_back(root);
         split_child(new_root, 0);
         root = new_root;
     }
 }
- 
+
 /**
- * Splits a child node of a BTreeNode. Called if the child became too
+ * Splits a child node of a BTreeNode. Called if the child became too 
  * large.
  * @param parent The parent whose child we are trying to split.
  * @param child_idx The index of the child in its parent's children
@@ -97,109 +95,73 @@ void BTree<K, V>::insert(const K& key, const V& value)
 template <class K, class V>
 void BTree<K, V>::split_child(BTreeNode* parent, size_t child_idx)
 {
+
+    /* TODO Your code goes here! */
+    BTreeNode * child = parent->children[child_idx];
+    
+    size_t cSize = child->elements.size();
+    size_t median = (cSize-1)/2;
+    
+    BTreeNode * right = new BTreeNode(false, order); //new right node
+    
+    //split child node and put data into right node
+    for (size_t i = median+1; i < cSize; i++)
+    {
+        right->elements.insert(right->elements.begin(),child->elements.back());
+        child->elements.pop_back();
+        
+        right->children.insert(right->children.begin(), child->children.back());
+        child->children.pop_back();
+    }
+    
+    // insder middle pair into parent
+    parent->elements.insert(parent->elements.begin()+child_idx, child->elements[median]);
+    child->elements.pop_back();
+    
+    //insert right node pointer into parent
+    parent->children.insert(parent->children.begin()+child_idx, right);
+    child->children.pop_back();
+    
+
+    /*std::vector< DataPair >::iterator el;
+    std::vector< BTreeNode >::iterator ch;
+    
+    while (el = (mEl++); el != child->elements.end(); el++) {
+        rElem.insert(rElem.front(), *el);
+        delete el;
+    }*/
+    
+
     /* Assume we are splitting the 3 6 8 child.
      * We want the following to happen.
-     *     | 2 |
+     *     | 2 | 
      *    /     \
      * | 1 |   | 3 | 6 | 8 |
      *
      *
-     * Insert a pointer into parent's children which will point to the
+     * Insert a pointer into parent's children which will point to the 
      * new right node. The new right node is empty at this point.
-     *     | 2 |   |
+     *     | 2 |   | 
      *    /     \
      * | 1 |   | 3 | 6 | 8 |
      *
      * Insert the mid element from the child into its new position in the
      * parent's elements. At this point the median is still in the child.
-     *     | 2 | 6 |
+     *     | 2 | 6 | 
      *    /     \
      * | 1 |   | 3 | 6 | 8 |
      *
      * Now we want to copy over the elements (and children) to the right
      * of the child median into the new right node, and make sure the left
-     * node only has the elements (and children) to the left of the child
+     * node only has the elements (and children) to the left of the child 
      * median.
-     *     | 2 | 6 |
+     *     | 2 | 6 | 
      *    /   /     \
      * | 1 | | 3 | | 8 |
      *
      */
- 
-    /* The child we want to split. */
-    BTreeNode* child = parent->children[child_idx];
-    /* The "left" node is the old child, the right child is a new node. */
-    BTreeNode* new_left = child;
-    BTreeNode* new_right = new BTreeNode(child->is_leaf, order);
- 
-    /* E.g.
-     * | 3 | 6 | 8 |
-     * Mid element is at index (3 - 1) / 2 = 1 .
-     * Mid child (bar) is at index 4 / 2 = 2 .
-     * E.g.
-     * | 2 | 4 |
-     * Mid element is at index (2 - 1) / 2 = 0 .
-     * Mid child (bar) is at index 2 / 2 = 1 .
-     * This definition is to make this BTree act like the visualization
-     * at
-     * https://www.cs.usfca.edu/~galles/visualization/BTree.html
-     */
-    size_t mid_elem_idx = (child->elements.size() - 1) / 2;
-    size_t mid_child_idx = child->children.size() / 2;
- 
-    /* Iterator for where we want to insert the new child. */
-    auto child_itr = parent->children.begin() + child_idx + 1;
-    /* Iterator for where we want to insert the new element. */
-    auto elem_itr = parent->elements.begin() + child_idx;
-    /* Iterator for the middle element. */
-    auto mid_elem_itr = child->elements.begin() + mid_elem_idx;
-    /* Iterator for the middle child. */
-    auto mid_child_itr = child->children.begin() + mid_child_idx;
- 
- 
-    parent->elements.insert(elem_itr,*mid_elem_itr);
-    parent->children.insert(child_itr , new_right);
- 
-    new_right->elements.assign(mid_elem_itr+1,child->elements.end() );
-    new_left->elements.assign(child->elements.begin(),mid_elem_itr);
- 
-    if(child->is_leaf==true)
-        return;
-    new_right->children.assign(mid_child_itr,child->children.end());
-    new_left->children.assign(child->children.begin(),mid_child_itr);
- 
-    // parent->children[mid_child_idx]= new_left;
-   
-    // (parent->children).insert(mid_child_itr, new_right);
-/*
-    for (typename vector<BTreeNode*>::iterator it = mid_child_itr ; it <child->children.end() ; it++)
-    {
-        new_right->children.push_back(*it);
- 
-    }
-    for (int i = 0 ; i<mid_child_idx ; i++)
-    {
-        new_left->children.push_back(child->children[i]);
- 
-    }
-    for (typename vector<DataPair>::iterator it = mid_elem_itr ; it <child->elements.end() ; it++)
-    {
-        new_right->elements.push_back(*it);
- 
-    }
-    for (int i=0 ; i<mid_elem_idx ;i++)
-    {
- 
-        new_left->elements.push_back(child->elements[i]);
-    }
-    */
-   //parent->children[mid_child_idx]= new_left;
-    //(parent->children).insert(mid_child_iter,mid_child_idx+1,new_right);
- 
-    /* TODO Your code goes here! */
-    //parent->elements[]
 }
- 
+
 /**
  * Private recursive version of the insert function.
  * @param subroot A reference of a pointer to the current BTreeNode.
@@ -210,56 +172,49 @@ void BTree<K, V>::split_child(BTreeNode* parent, size_t child_idx)
 template <class K, class V>
 void BTree<K, V>::insert(BTreeNode* subroot, const DataPair& pair)
 {
+
+    size_t index = insertion_idx(subroot->elements, pair);
+    std::cout << *subroot <<  std::endl;
+
+    if (index > subroot->elements.size()) {
+        std::cout << "found" <<  std::endl;
+        return;
+    }
+    else{
+        if (subroot->elements.empty()) {
+            subroot->children.push_back(NULL);
+        }
+        if (subroot->is_leaf){
+            std::cout << "is_leaf" <<  std::endl;
+
+            subroot->elements.insert(subroot->elements.begin()+index, pair);
+            subroot->children.insert(subroot->children.begin()+index, NULL);
+            std::cout << "inserted" <<  std::endl;
+
+            return;
+        }
+        else{
+            std::cout << "insert again" <<  std::endl;
+
+            insert(subroot->children[index], pair);
+            std::cout << "okay" <<  std::endl;
+
+        }
+
+        if(subroot->children[index]->elements.size() >= order){
+            split_child(subroot, index);
+            std::cout << "split" <<  std::endl;
+
+        }
+    }
     /* There are two cases to consider.
      * If the subroot is a leaf node and the key doesn't exist subroot, we
      * should simply insert the pair into subroot.
      * Otherwise (subroot is not a leaf and the key doesn't exist in subroot)
      * we need to figure out which child to insert into and call insert on it.
      * After this call returns we need to check if the child became too large
-     * and thus needs to be split to maintain order.
+     * and thus needs to be split to maintain order. 
      */
-/*
-    size_t first_larger_idx = insertion_idx(subroot->elements, pair);
-    if (first_larger_idx<subroot->elements.size() and first_larger_idx>0)
-    {
-        subroot->elements.insert(subroot->elements.begin() + first_larger_idx,pair);
-        if(subroot->elements.size()>order)
-            split_child(subroot,subroot->children.size()/2 +1);
- 
-    }
-    else
-        insert(subroot->children[first_larger_idx],pair);
-*/
-    size_t first_larger_idx = insertion_idx(subroot->elements, pair);
-    if (subroot->is_leaf==true)
-    {
-        if (first_larger_idx>=0 and first_larger_idx<subroot->elements.size())
-        {
-            if (!(subroot->elements[first_larger_idx]== pair))
-                (subroot->elements).insert(subroot->elements.begin()+first_larger_idx,pair);
-        }
-        else
-             (subroot->elements).insert(subroot->elements.begin()+first_larger_idx,pair);
-    }
-    else
-    {
-         if (first_larger_idx>=0 and first_larger_idx<subroot->elements.size())
-         {
-             if (!(subroot->elements[first_larger_idx]== pair))
-            {
-                insert(subroot->children[first_larger_idx],pair);
-                if(subroot->children[first_larger_idx]->elements.size()>order)
-                    split_child(subroot,first_larger_idx);
-            }
-        }
-         else
-        {
-            insert(subroot->children[first_larger_idx],pair);
-            if(subroot->children[first_larger_idx]->elements.size()>order)
-                    split_child(subroot,first_larger_idx);
-        }
-    }
- 
- 
+
     /* TODO Your code goes here! */
 }
