@@ -50,7 +50,7 @@ class BTree
          * if its key is less than the other's key.
          * @param lhs The left hand of the < operator.
          * @param rhs The right hand of the < operator.
-         * @return true if lhs's key is less than rhs' key, false
+         * @return true valueif lhs's key is less than rhs' key, false
          * otherwise.
          */
         inline friend bool operator<(const DataPair& lhs, const DataPair& rhs)
@@ -67,7 +67,7 @@ class BTree
          */
         inline friend bool operator<(const DataPair& lhs, const K& rhs)
         {
-            return lhs.key < rhs;
+            return lhs.key < rhs; 
         }        
 
          /**
@@ -139,7 +139,7 @@ class BTree
         }
 
          /**
-         * Equality operator for a K and a DataPair.
+         * Equality operator for a K and a DataPw is an example that illustrate the insert / splitting process.air.
          * @param lhs The left hand side (DataPair) of the == operator.
          * @param rhs The right hand side (K) of the == operator.
          * @return true if lhs is equal to rhs's key, false otherwise.
@@ -177,8 +177,11 @@ class BTree
          * the elements and is_leaf information.
          */
         BTreeNode(const BTreeNode& other)
-            : is_leaf(other.is_leaf), elements(other.elements)
+            : is_leaf(other.is_leaf)
         {
+            elements.reserve(other.order + 1);
+            elements = other.elements;
+            children.reserve(other.order + 2);
         }
 
         /**
@@ -303,7 +306,7 @@ class BTree
      * @param pair The DataPair to be inserted.
      */
     void insert(BTreeNode* subroot, const DataPair& pair);
-
+   
     /**
      * Private recursive version of the find function.
      * @param subroot A reference of a pointer to the current BTreeNode.
@@ -363,37 +366,35 @@ template <class T, class C>
 size_t insertion_idx(const std::vector< T >& elements, const C& val)
 {
     /* TODO Your code goes here! */
-    // larger than the largest value in the vector
-    if (val > elements.back()) {
-        return elements.size()+1;
+  /*
+   size_t position=0;
+   
+    for(auto it=elements.begin();it!=elements.end();it++)
+    {	position++;
+    	if(*it>val || *it==val)
+    	{
+    		return position-1;	
+    	}	
     }
-    
-    //smaller than the smallest value
-    if (val < elements.front()) {
-        return 1;
-    }
-    
-    //binary search
-    unsigned int hi = elements.size();
-    unsigned int lo = 0;
-    unsigned int mid = (hi+lo)/2;
-    
-    while(hi != lo)
-    {
-        if (elements[mid] == val) return elements.size()+mid;
-        if (elements[mid] > val)
-        {
-            hi = mid;
-            mid = (hi+lo)/2;
-        }
-        if (elements[mid] < val)
-        {
-            lo = mid;
-            mid = (hi+lo)/2;
-        }
-    }
-    
-    return mid;
+    return  position;	
+*/
+	auto first=0;
+	auto last=0;
+	if(elements.size()>0)
+		last=elements.size()-1;
+	else
+		return 0;	
+	while(first<=last)
+	{
+		int mid=(first+last)/2;
+		if(elements.at(mid)>val)
+			last=mid-1;
+		else if(elements.at(mid)<val)
+			first=mid+1;
+		else if(elements.at(mid)==val)
+			return mid;	
+	}
+	
 }
 
 #include "btree_given.cpp"
