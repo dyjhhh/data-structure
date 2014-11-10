@@ -236,10 +236,18 @@ class KDTree
         /** Helper function for grading */
         void printTree(int low, int high, std::vector<std::string> & output,
                 int left, int top, int width, int currd) const;
+                
 
         /**
          * @todo Add your helper functions here.
          */
+         int dimension;
+         void KDTree_build_helper(vector< Point<Dim> > & newPoints, int curr_dim,int left,int right);
+         int partition( vector< Point<Dim> > & newPoints,int low, int high,int pivotIndex,int axis);
+	 void select( vector< Point<Dim> > & newPoints,int low, int high,int n,int axis);
+	 Point<Dim> find_helper(const Point<Dim> & query,int left,int right,int axis) const;
+	 int distance(const Point<Dim> & target, const Point<Dim> & currentBest) const;
+	 int distance_dim(const Point<Dim> & target, const Point<Dim> & currentBest,int axis) const;
 };
 
 #include "kdtree.cpp"
