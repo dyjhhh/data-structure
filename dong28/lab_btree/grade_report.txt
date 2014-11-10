@@ -1,0 +1,21 @@
+Monad Autograder
+Testing lab_btree at 2014-11-10 01:58:16
+
+"Television won't be able to hold on to any market it captures after the first six months. People will soon get tired of staring at a plywood box every night." ~ Darryl Zanuck, 20th Century Fox, 1946
+
+Setting up test environment...
+Compiling...
+================================================================
+make: execvp: clang++: Stale file handle
+make: *** [proxy.o] Error 127
+
+
+Running tests...
+================================================================
+Could not execute test cases
+
+
+Total score...
+================================================================
+TOTAL SCORE: 0
+
