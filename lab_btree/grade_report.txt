@@ -1,21 +1,28 @@
 Monad Autograder
-Testing lab_btree at 2014-11-10 01:58:16
+Testing lab_btree at 2014-11-10 11:33:05
 
-"Television won't be able to hold on to any market it captures after the first six months. People will soon get tired of staring at a plywood box every night." ~ Darryl Zanuck, 20th Century Fox, 1946
+"The primary purpose of the DATA statement is to give names to constants; instead of referring to pi as 3.141592653589793 at every appearance, the variable PI can be given that value with a DATA statement and used instead of the longer form of the constant. This also simplifies modifying the program, should the value of pi change." ~ FORTRAN manual for Xerox computers
 
 Setting up test environment...
 Compiling...
 ================================================================
-make: execvp: clang++: Stale file handle
-make: *** [proxy.o] Error 127
 
 
 Running tests...
 ================================================================
-Could not execute test cases
+test_insertion_idx_emp  . . . [10 pts] - passed
+test_insertion_idx_small  . . [10 pts] - passed
+test_insertion_idx_logn . . . [10 pts] - passed
+test_btree3_small (asan)  . . [10 pts] - passed
+test_btree3_large_seq . . . . [10 pts] - passed
+test_btree3_large_rand  . . . [10 pts] - passed
+test_btree64_large_seq  . . . [10 pts] - passed
+test_btree64_large_rand . . . [10 pts] - passed
+test_btree128_med_rand (asan) [10 pts] - passed
+test_btree5_strings . . . . . [10 pts] - passed
 
 
 Total score...
 ================================================================
-TOTAL SCORE: 0
+TOTAL SCORE: 100
 
