@@ -1,7 +1,7 @@
 Monad Autograder
-Testing mp6 at 2014-11-14 00:29:39
+Testing mp6 at 2014-11-15 01:25:17
 
-"I've seen it on Google Maps; I think I know what I'm talking about" ~ Kyle Johnson
+"If you're not failing every now and again, it's a sign you're not doing anything very innovative." ~ Woody Allen
 
 Setting up test environment...
 Compiling...
