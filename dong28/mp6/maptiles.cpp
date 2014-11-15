@@ -36,7 +36,7 @@ MosaicCanvas * mapTiles(SourceImage const & theSource, vector<TileImage> const &
 
 	KDTree<3> tree(puppy);
 		
-	for(int i=0;i<theSource.getRows();i=i++)
+	for(int i=0;i<theSource.getRows();i++)
 		for(int j=0;j<theSource.getColumns();j++)
 		{
 			RGBAPixel avg= theSource.getRegionColor(i,j);
