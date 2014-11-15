@@ -73,18 +73,24 @@ LPHashTable<K,V>::LPHashTable( LPHashTable<K,V> const & other ) {
 
 template <class K, class V>
 void LPHashTable<K,V>::insert( K const & key, V const & value ) {
-    /**
-     * @todo Implement this function.
-     *
-     * @note Remember to resize the table when necessary (load factor >=
-     *  0.7). **Do this check *after* increasing elems!!** Also, don't
-     *  forget to mark the cell for probing with should_probe!
-     */
 
-    (void) key;   // prevent warnings... When you implement this function, remove this line.
-    (void) value; // prevent warnings... When you implement this function, remove this line.
+/**
+* @todo Implement this function.
+*
+* @note Remember to resize the table when necessary (load factor >=
+* 0.7). **Do this check *after* increasing elems!!** Also, don't
+* forget to mark the cell for probing with should_probe!
+*/
+elems++;
+if (shouldResize())
+resizeTable();
+pair<K,V> *p = new pair<K,V>(key, value);
+int idx = hash( key, size );
+while( table[idx] != NULL )
+idx = ( idx + 1 ) % size;
+table[idx] = p;
+should_probe[idx] = true;
 }
-
 template <class K, class V>
 void LPHashTable<K,V>::remove( K const & key ) {
     int idx = findIndex( key );

@@ -52,10 +52,26 @@ bool AnagramFinder<Dict>::checkWord( const string & word, const string & test ) 
      * templated hashtable class Dict.
      */
 
-    (void) word; // prevent warnings... When you implement this function, remove this line.
-    (void) test; // prevent warnings... When you implement this function, remove this line.
-
-    return true;
+    if (word.length() != test.length())
+return false;
+Dict<char, int>wordHash(256);
+for(int i = 0; i < word.length(); i++)
+{
+wordHash[word[i]]++;
+}
+Dict<char, int>testHash(256);
+for (int i = 0; i < test.length(); i++)
+{
+testHash[test[i]]++;
+}
+typename Dict<char, int>::iterator wit = wordHash.begin();
+typename Dict<char, int>::iterator tit = testHash.begin();
+for (int i = 0; i < 256; i++)
+{
+if (testHash[i] != wordHash[i])
+return false;
+}
+return true;
 }
 
 /**
