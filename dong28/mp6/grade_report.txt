@@ -1,7 +1,7 @@
 Monad Autograder
-Testing mp6 at 2014-11-16 01:11:07
+Testing mp6 at 2014-11-17 01:12:46
 
-"Hulp -> Wat is dit?" ~ LibreOffice Impress
+"It's like comparing a small apple with a medium-sized apple." ~ Jason Cho
 
 Setting up test environment...
 Compiling...
