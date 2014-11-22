@@ -86,7 +86,7 @@ template <class T, class Compare>
 heap<T, Compare>::heap( const std::vector<T> & elems ) {
     /// @todo Construct a heap using the buildHeap algorithm
       _elems.push_back(T());
-        for (int i=0;i<elems.size();i++) // copy elements
+        for (size_t  i=0;i<elems.size();i++) // copy elements
          _elems.push_back(elems[i]);
         
  
