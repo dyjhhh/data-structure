@@ -7,9 +7,9 @@ class DisjointSets {
 
 	public:
 
-		void addelements(int number);
-		void setunion(int element1,int element2);
-		int find(int a);
+		void addelements(size_t number);
+		void setunion(size_t element1,size_t element2);
+		int find(size_t number);
 		bool no_moreDsets();
 		void remove()
 		{

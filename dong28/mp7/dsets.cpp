@@ -1,20 +1,20 @@
 #include "dsets.h"
 #include <iostream>
 using namespace std;
-void DisjointSets:: addelements(int number)
+void DisjointSets:: addelements(size_t number)
 {
 	max_represtative=0;
-	int offset=myvector.size();
-	for(int i=offset;i<number+offset;i++)
+        int offset=myvector.size();
+	for(unsigned int i=offset;i<number+offset;i++)
 		myvector.push_back(-1);	
 	
 	//cout<<" "<<mymap[number]<<"\n";
 	
 }
-void DisjointSets::setunion(int element1,int element2)
+void DisjointSets::setunion(size_t  element1,size_t element2)
 {
 	//cout<<"elements"<<element1<<" "<<element2<<"\n";
-	if(element1>=0 && element1<myvector.size() && element2>=0 && element2<myvector.size())
+	if( element1<myvector.size() && element2<myvector.size())
 	{
 		element1=find(element1);
 		element2=find(element2);
@@ -34,9 +34,9 @@ void DisjointSets::setunion(int element1,int element2)
 	}
 }
 
-int DisjointSets::find(int number)
+int DisjointSets::find(size_t number)
 {
-	if(number >=0 && number < myvector.size())
+	if(number < myvector.size())
 	{
 		if( ( myvector[number]<0) )
 		{
@@ -53,7 +53,9 @@ int DisjointSets::find(int number)
 bool DisjointSets:: no_moreDsets()
 {
 	//cout<<max_represtative;
-	if(max_represtative==myvector.size())
+  if(max_represtative>=0)
+{
+  if((unsigned) max_represtative==myvector.size())
 	{
 		//for(int i=0;i<myvector.size();i++)
 		//	cout<<" "<<myvector[i];
@@ -62,4 +64,7 @@ bool DisjointSets:: no_moreDsets()
 	}
 	else
 		return false;
+}
+  else 
+    return false;
 }
