@@ -1,7 +1,7 @@
 Monad Autograder
-Testing mp7 at 2014-12-04 02:03:08
+Testing mp7 at 2014-12-05 12:35:21
 
-"Most software today is very much like an Egyptian pyramid with millions of bricks piled on top of each other, with no structural integrity, but just done by brute force and thousands of slaves." ~ Alan Kay
+"If you have a procedure with ten parameters, you probably missed some." ~ Alan J. Perlis
 
 Setting up test environment...
 Error: /dev/shm/225/cs225_checkout/dong28/mp7/maze.h does not exist.
