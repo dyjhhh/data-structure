@@ -1,7 +1,7 @@
 Monad Autograder
-Testing mp7 at 2014-12-05 12:35:21
+Testing mp7 at 2014-12-06 00:51:47
 
-"If you have a procedure with ten parameters, you probably missed some." ~ Alan J. Perlis
+"All that is gold does not glitter, / Not all those who wander are lost;" ~ Bilbo Baggins
 
 Setting up test environment...
 Error: /dev/shm/225/cs225_checkout/dong28/mp7/maze.h does not exist.
