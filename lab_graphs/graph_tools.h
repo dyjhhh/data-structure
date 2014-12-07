@@ -24,7 +24,7 @@ using std::unordered_map;
  */
 namespace GraphTools
 {
-
+  void minWeightHelper(Graph & graph, Vertex v, stack<Vertex>&vertices1, stack<Vertex>&vertices2);
     /**
      * Finds the minimum edge weight in the Graph graph.
      */
