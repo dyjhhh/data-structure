@@ -34,10 +34,10 @@ int GraphTools::findShortestPath(Graph & graph, Vertex start, Vertex end)
 	
 	vector<Vertex> vertices=graph.getVertices();
 	vector<Edge> edges= graph.getEdges();
-	for(int i=0;i<vertices.size();i++)
+	for(unsigned int i=0;i<vertices.size();i++)
 	graph.setVertexLabel(vertices[i],"UNEXPLORED");
 		
-	for(int j=0;j<edges.size();j++)
+	for(unsigned int j=0;j<edges.size();j++)
 		graph.setEdgeLabel(edges[j].source,edges[j].dest,"UNEXPLORED");
 		
 	
@@ -57,7 +57,7 @@ int GraphTools::findShortestPath(Graph & graph, Vertex start, Vertex end)
 		temp= q_graph.front();
 		q_graph.pop();
 		neighbors=graph.getAdjacent(temp);
-		for(int i=0;i<neighbors.size() && !flag;i++)
+		for(unsigned int i=0;i<neighbors.size() && !flag;i++)
 		{
 			if(neighbors[i]==end)
 			flag=true;
@@ -121,11 +121,11 @@ int GraphTools::findMinWeight(Graph & graph)
 {
 vector<Vertex> vertices=graph.getVertices();
 	vector<Edge> edges= graph.getEdges();
-	for(int i=0;i<vertices.size();i++)
+	for(unsigned int i=0;i<vertices.size();i++)
 	{
 		graph.setVertexLabel(vertices[i],"UNEXPLORED");
 		vector<Vertex> neighbors = graph.getAdjacent(vertices[i]);
-		for(int j=0;j<neighbors.size();j++)
+		for(unsigned int j=0;j<neighbors.size();j++)
 		graph.setEdgeLabel(vertices[i],neighbors[j],"UNEXPLORED");
 	}
 
@@ -140,7 +140,7 @@ vector<Vertex> vertices=graph.getVertices();
 	Vertex current2=vertices2.top();
 	vertices2.pop();
 	
-	while(!vertices1.size()==0)
+	while((!(vertices1).size())==0)
 	{	
 		if(graph.getEdgeWeight(vertices1.top(),vertices2.top())<graph.getEdgeWeight(current1,current2))
 		{
@@ -157,7 +157,7 @@ vector<Vertex> vertices=graph.getVertices();
 void GraphTools::minWeightHelper(Graph &graph,Vertex v,stack<Vertex>&vertices1,stack<Vertex>&vertices2)
 {
 	vector<Vertex> adjacent = graph.getAdjacent(v);
-        for(int i=0;i<adjacent.size();i++)
+        for(unsigned int i=0;i<adjacent.size();i++)
         {
                	if (graph.getVertexLabel(adjacent[i]) == "UNEXPLORED")
                 {
@@ -200,7 +200,7 @@ void GraphTools::findMST(Graph & graph)
 	set.addelements(size);
 	vector<Edge> edges= graph.getEdges();
 		sort(edges.begin(), edges.end());
-        		for(int i = 0; i < edges.size(); i++)
+        		for(unsigned int i = 0; i < edges.size(); i++)
 				{
              			
             			   	a= set.find(edges[i].dest);
