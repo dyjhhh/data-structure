@@ -1,7 +1,9 @@
+svn: Working copy '/dev/shm/225/cs225_current_checkout' locked
+svn: run 'svn cleanup' to remove locks (type 'svn help cleanup' for details)
 Monad Autograder
-Testing mp7 at 2014-12-07 00:46:57
+Testing mp7 at 2014-12-08 00:37:21
 
-"Fish are meat, they're like water poultry." ~ Chase Geigle
+"Simplicity is the ultimate sophistication." ~ Leonardo da Vinci
 
 Setting up test environment...
 Error: /dev/shm/225/cs225_checkout/dong28/mp7/maze.h does not exist.
