@@ -1,8 +1,8 @@
-#include "maze.h"
+#include"maze.h"
 #include <time.h> 
 #include <map>
-#include <iostream>
-#include <vector>
+#include<iostream>
+#include<vector>
 #include <queue>  
 #include <algorithm>
 using namespace std;
@@ -34,13 +34,20 @@ void SquareMaze:: makeMaze (int width, int height)
 			down_wall.push_back(true);
 			right_wall.push_back(true);
 		}
-
-		//run below lines recursively
+		/*for(int i=0;i<down_wall.size();i++)
+			cout<<" "<<down_wall[i];
+		cout<<"\n";
+		for(int i=0;i<right_wall.size();i++)
+			cout<<" "<<right_wall[i];
+		cout<<"\n";			
+		*/
+		
+		//need some way to run below lines recursively
 		while(disjSets.no_moreDsets()!=true)
 		{
 			int down_index = rand() % down_wall.size();
 			int right_index= down_index;
-		
+			//int right_index=rand() % right_wall.size();
 		
 			if(down_wall[down_index]==true && !(down_index>=down_wall.size()-m_width))
 			{
@@ -60,8 +67,16 @@ void SquareMaze:: makeMaze (int width, int height)
 				}
 			}	
 		}
-			
-	}
+			/*
+			cout<<"Removed the wall=0 \nThe wall exist=1 \n down wall \n";
+			for(int i=0;i<down_wall.size();i++)
+				cout<<" "<<down_wall[i];
+			cout<<"\n right walls\n";
+			for(int i=0;i<right_wall.size();i++)
+				cout<<" "<<right_wall[i];
+			cout<<"\n";
+			*/			
+	}//is maze==false
 }
 
 bool SquareMaze::canTravel (int x, int y, int dir) const
@@ -72,19 +87,19 @@ bool SquareMaze::canTravel (int x, int y, int dir) const
 	else
 	{
 		int index=m_width*y+x;
-		
-		if(dir==0)//right
+		//cout<<"index"<<index<<"\n";
+		if(dir==0)//right step
 		{
 			if(right_wall[index]==false )
 				ret_val=true;
 		}
-		else if(dir==1)// down
+		else if(dir==1)// down step
 		{
 			if(down_wall[index]==false )
 				ret_val=true;
 
 		}
-		else if(dir==2)// left
+		else if(dir==2)// left step
 		{
 			if(index>0)
 			{
@@ -92,9 +107,9 @@ bool SquareMaze::canTravel (int x, int y, int dir) const
 					ret_val=true;
 			}
 		}
-		else if(dir==3)//up
+		else if(dir==3)//up step
 		{
-			if(index>m_width-1)//go up from second row only
+			if(index>m_width-1)//make sure go up from second row only
 			{
 				
 				if(down_wall[index-m_width]==false)
@@ -137,48 +152,37 @@ vector< int > SquareMaze:: solveMaze ()
 	 	for(int j=0;j<m_width;j++)
 	 	{	vector<int> adjacent_cells;
 	 		int index=m_width*i+j;
-	
+	 		//cout<<index<<endl;
 	 		if(canTravel(j,i,2))
 	 		{
 	 			//push left neighbour 
-	 			
+	 			//cout<<"left free for "<<i<<j<<endl;
 	 			adjacent_cells.push_back(index-1);
 	 		}
 	 		if(canTravel(j,i,0))
 	 		{
 	 			//push right neighbour
-	
+	 			//cout<<"right free for "<<i<<j<<endl; 
 	 			adjacent_cells.push_back(index+1);
 	 		}
 	 		if(canTravel(j,i,1))
 	 		{
 	 			//push down neighbour 
-
+	 			//cout<<"down free for "<<i<<j<<endl;
 	 			adjacent_cells.push_back(index+m_width);
 	 		}
 	 		if(canTravel(j,i,3))
 	 		{
 	 			//push up neighbour 
-
+	 			//cout<<"up free for "<<i<<j<<endl;
 	 			adjacent_cells.push_back(index-m_width);
 	 		}
-
+	 		//cout<<adjacent_cells.size()<<endl;
 	 		adjacency_list.insert((make_pair(index, adjacent_cells)));
 	 	}
 	 }
 	//initalize predecssor and distance
-	
-	int *p = malloc(m_width*m_height * sizeof *p);
-	int *d = malloc(m_width*m_height * sizeof *d);
-
-	 if(!p) {
-        //Error out here
-        return;
-    }
-     if(!d) {
-        //Error out here
-        return;
-    }
+	int p[m_width*m_height],d[m_width*m_height];
 	//start bfs
 	vector<int> vertices;
 	for(int i=0;i<m_width*m_height;i++)
@@ -186,8 +190,6 @@ vector< int > SquareMaze:: solveMaze ()
 		// mark all vertices unvisted
 		vertices.push_back(-1);
 		d[i]=0;
-
-		free(d);
 	}
 	for(int i=0;i<m_width*m_height;i++)
 	{
@@ -202,7 +204,7 @@ vector< int > SquareMaze:: solveMaze ()
 			while(!myqueue.empty())
 			{
 				int front=myqueue.front();
-	
+				//cout<<"ran ";
 				myqueue.pop();
 				vector<int> adj_vertex=adjacency_list[front];
 				for(int j=0;j<adj_vertex.size();j++)
@@ -212,16 +214,14 @@ vector< int > SquareMaze:: solveMaze ()
 						vertices[adj_vertex[j]]=1;//mark as visited
 						p[adj_vertex[j]]=front;
 						d[adj_vertex[j]]=1+d[front];
-		
+						//cout<<d[i]<<" ";
 						myqueue.push(adj_vertex[j]);
-				
+						//cout<<"ran ";
 					}
 				}
 			}
-
+			//cout<<"\n";
 		}
-		free(p);
-		free(d);
 	}
 	
 	
@@ -232,7 +232,8 @@ vector< int > SquareMaze:: solveMaze ()
 		
 	//return the path
 	std::sort (long_path.begin(), long_path.end()); 
-
+	//for(int i=0;i<long_path.size();i++)
+	//	cout<<long_path[i]<<endl;
 	int path_length=long_path[long_path.size()-1];
 	int path_index;
 	for(int i=m_width*m_height-m_width;i<m_width*m_height;i++)
@@ -244,15 +245,15 @@ vector< int > SquareMaze:: solveMaze ()
 			break;
 		}	
 	}
-
+	//cout<<path_index;
 	vector<int> final_path;
 	while(path_index!=0)
 	{
-
+		//cout<<path_index<<endl;
 		int curr_x=path_index%m_width;
 		int curr_y=path_index/m_width;
 		int prev=p[path_index];
-
+		//cout<<prev<<endl;
 		int prev_x=prev%m_width;
 		int prev_y=prev/m_width;
 		if(curr_x==prev_x+1 && curr_y==prev_y)
@@ -389,7 +390,7 @@ PNG * SquareMaze::drawMazeWithSolution ()
 			
 		}
 	}
-
+	//cout<<path_index;
 	x=final%m_width;
 	y=final/m_width;
 	
