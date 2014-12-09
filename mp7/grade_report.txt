@@ -1,8 +1,7 @@
-Grading revision r59747 by dong28, dated 2014-12-08 22:51:10.000214132 -0600 CST
 Monad Autograder
-Testing mp7 at 2014-12-09 12:57:19
+Testing mp7 at 2014-12-09 13:08:53
 
-"The trouble with programmers is that you can never tell what a programmer is doing until it's too late." ~ Seymour Cray
+"Chicken is basically a vegetable, I mean, if you compare it to steak." ~ Sean Massung
 
 Setting up test environment...
 Compiling...
