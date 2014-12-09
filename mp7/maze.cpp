@@ -167,7 +167,18 @@ vector< int > SquareMaze:: solveMaze ()
 	 	}
 	 }
 	//initalize predecssor and distance
-	int p[m_width*m_height],d[m_width*m_height];
+	
+	int *p = malloc(m_width*m_height * sizeof *p);
+	int *d = malloc(m_width*m_height * sizeof *d);
+
+	 if(!p) {
+        //Error out here
+        return;
+    }
+     if(!d) {
+        //Error out here
+        return;
+    }
 	//start bfs
 	vector<int> vertices;
 	for(int i=0;i<m_width*m_height;i++)
@@ -175,6 +186,8 @@ vector< int > SquareMaze:: solveMaze ()
 		// mark all vertices unvisted
 		vertices.push_back(-1);
 		d[i]=0;
+
+		free(d);
 	}
 	for(int i=0;i<m_width*m_height;i++)
 	{
@@ -207,6 +220,8 @@ vector< int > SquareMaze:: solveMaze ()
 			}
 
 		}
+		free(p);
+		free(d);
 	}
 	
 	
