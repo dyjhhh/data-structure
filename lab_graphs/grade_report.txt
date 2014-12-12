@@ -1,9 +1,7 @@
-svn: Working copy '/dev/shm/225/cs225_current_checkout' locked
-svn: run 'svn cleanup' to remove locks (type 'svn help cleanup' for details)
 Monad Autograder
-Testing lab_graphs at 2014-12-08 00:32:28
+Testing lab_graphs at 2014-12-11 13:14:49
 
-"Procrastination: working tomorrow for a better today." ~ Anonymous
+"I've seen many balls. Actually, let's do an example without balls." ~ Jack Toole
 
 Setting up test environment...
 Compiling...
